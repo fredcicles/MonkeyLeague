@@ -1,0 +1,204 @@
+{
+    "url": "https://api-mainnet.magiceden.dev/v2/tokens/5MSqye7gKzyj6cT65bBHS9r75q792ueF4jR1dSgYi3U6",
+    "mintAddress": "5MSqye7gKzyj6cT65bBHS9r75q792ueF4jR1dSgYi3U6",
+    "owner": "2dSxjEKHC3EdFxu6eVwBwQjfY3tYxHAzoCGTv5Jvj2WB",
+    "supply": 1,
+    "collection": "monkeyball",
+    "name": "Monkey #744",
+    "updateAuthority": "AuoD4FKLSDKpuNm7y1G5RX3jBdrXerHfaVjfP415miET",
+    "primarySaleHappened": 1,
+    "sellerFeeBasisPoints": 450,
+    "image": "https://www.arweave.net/3Tg78cXm1wPHlDLnpYossF-af3kcuBVSR_m8MoRTMio?ext=png",
+    "externalUrl": "https://www.monkeyleague.io",
+    "attributes": [
+        {
+            "trait_type": "Monkey Name",
+            "value": "Salak"
+        },
+        {
+            "trait_type": "Monkey ID",
+            "value": "744"
+        },
+        {
+            "trait_type": "Monkey Parents",
+            "value": ""
+        },
+        {
+            "trait_type": "Monkey Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Monkey Date of Birth",
+            "value": "2021-12-30T15:40:04.8396"
+        },
+        {
+            "trait_type": "Alpha Score",
+            "value": "426"
+        },
+        {
+            "trait_type": "Color",
+            "value": "MonkeySky Blue"
+        },
+        {
+            "trait_type": "Tattoo",
+            "value": "Tiger Skin"
+        },
+        {
+            "trait_type": "Hairstyle",
+            "value": "Tidal Wave"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Sad"
+        },
+        {
+            "trait_type": "Mouth",
+            "value": "Smirk"
+        },
+        {
+            "trait_type": "Nose",
+            "value": "Waterfall"
+        },
+        {
+            "trait_type": "Ears",
+            "value": "Piegon"
+        },
+        {
+            "trait_type": "Arms",
+            "value": "Wing Tip Skinny"
+        },
+        {
+            "trait_type": "Legs",
+            "value": "Leaf Tip"
+        },
+        {
+            "trait_type": "Outfit",
+            "value": "Plain Tee"
+        },
+        {
+            "trait_type": "Pattern Style",
+            "value": "Razor Spike"
+        },
+        {
+            "trait_type": "Accuracy",
+            "value": "13"
+        },
+        {
+            "trait_type": "Max Accuracy",
+            "value": "91"
+        },
+        {
+            "trait_type": "Passing",
+            "value": "14"
+        },
+        {
+            "trait_type": "Max Passing",
+            "value": "85"
+        },
+        {
+            "trait_type": "Defense",
+            "value": "17"
+        },
+        {
+            "trait_type": "Max Defense",
+            "value": "87"
+        },
+        {
+            "trait_type": "Control",
+            "value": "16"
+        },
+        {
+            "trait_type": "Max Control",
+            "value": "83"
+        },
+        {
+            "trait_type": "Precision Shot",
+            "value": "0.05"
+        },
+        {
+            "trait_type": "Protective Holding",
+            "value": "0.12"
+        },
+        {
+            "trait_type": "Hard Header",
+            "value": "0.17"
+        },
+        {
+            "trait_type": "Flank Pass",
+            "value": "0.09"
+        },
+        {
+            "trait_type": "Extreme Pressing",
+            "value": "0.07"
+        },
+        {
+            "trait_type": "Pass Interception",
+            "value": "0.06"
+        },
+        {
+            "trait_type": "Hard Tackle",
+            "value": "0.08"
+        },
+        {
+            "trait_type": "Defensive Awareness",
+            "value": "0.04"
+        },
+        {
+            "trait_type": "Last Stand Defense",
+            "value": "0.02"
+        },
+        {
+            "trait_type": "Golden Gloves",
+            "value": "0.03"
+        },
+        {
+            "trait_type": "Goalie Resistance",
+            "value": "0.07"
+        },
+        {
+            "trait_type": "Goalie Long Ball",
+            "value": "0.12"
+        },
+        {
+            "trait_type": "Monkey evolution history",
+            "value": "[]"
+        },
+        {
+            "trait_type": "Type",
+            "value": "Monkey"
+        },
+        {
+            "trait_type": "Created",
+            "value": "1640871604"
+        }
+    ],
+    "properties": {
+        "files": [
+            {
+                "uri": "https://www.arweave.net/3Tg78cXm1wPHlDLnpYossF-af3kcuBVSR_m8MoRTMio?ext=png",
+                "type": "image/png"
+            },
+            {
+                "uri": "https://cdn-nft-monkeys.s3.amazonaws.com/211230is9xNwhfAUQqUzZwP2BoKX/image.png",
+                "type": "image/png",
+                "cdn": true
+            },
+            {
+                "uri": "https://cdn-nft-monkeys.s3.amazonaws.com/211230is9xNwhfAUQqUzZwP2BoKX/image_full.png",
+                "type": "image/png",
+                "cdn": true
+            }
+        ],
+        "category": "image",
+        "creators": [
+            {
+                "address": "RRUMF9KYPcvNSmnicNMAFKx5wDYix3wjNa6bA7R6xqA",
+                "share": 8
+            },
+            {
+                "address": "BAjb6D4n8LGrzGpncShKFxkD8dpGKM3KoZ6yrmSrai8k",
+                "share": 92
+            }
+        ]
+    }
+}
