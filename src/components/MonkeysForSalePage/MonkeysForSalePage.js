@@ -1,65 +1,156 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { getMonkeysForSale } from '../../services/monkey-league-service'
+import { formatRawMonkeyData } from '../../helpers/monkey.helper'
+import './styles.css'
 
 const MonkeysForSalePage = () => {
     const [monkeys, setMonkeys] = useState([]);
 
     // Load the list of Monkeys
     useEffect(() => {
-        const _monkeys = getMonkeysForSale()
-
-        // Perform any data transformation here
-
-        setMonkeys(_monkeys)
+        getMonkeysForSale()
+            .then(monkeysForSale => {
+                const monkeysTransformed = formatRawMonkeyData(monkeysForSale)
+                setMonkeys(monkeysTransformed)
+            })
     }, [])
 
 
     return <div className='monkeys-for-sale-page'>
         <table>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    ID
-                </th>
-                <th>
-                    Alpha Score
-                </th>
-                <th>
-                    Max Accuracy
-                </th>
-                <th>
-                    Max Passing
-                </th>
-                <th>
-                    Max Defense
-                </th>
-                <th>
-                    Max Control
-                </th>
-                <th>
-                    Striker<br/>A+C
-                </th>
-                <th>
-                    Midfielder<br/>x+x
-                </th>
-                <th>
-                    Defender<br/>x+x
-                </th>
-                <th>
-                    Goalkeeper<br/>x+x
-                </th>
-                <th>
-                    Midfielder<br/>x+x
-                </th>
-                <th>
-                    Total Potential<br/>out of 400
-                </th>
-                <th>
-                    Total Potential<br/>%
-                </th>
-            </tr>
+            <thead>
+                <tr>
+                    <th rowspan="2">
+                        ID
+                    </th>
+                    <th rowspan="2">
+                        Name
+                    </th>
+                    <th rowspan="2">
+                        Alpha<br />Score
+                    </th>
+                    <th colspan="4">
+                        Skill Max Potential
+                    </th>
+                    <th colspan="2">
+                        Striker
+                    </th>
+                    <th colspan="2">
+                        Midfielder
+                    </th>
+                    <th colspan="2">
+                        Defender
+                    </th>
+                    <th colspan="2">
+                        Goalkeeper
+                    </th>
+                    <th rowspan="2">
+                        Total Potential<br />300 - 400
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Accuracy
+                    </th>
+                    <th>
+                        Passing
+                    </th>
+                    <th>
+                        Defense
+                    </th>
+                    <th>
+                        Control
+                    </th>
+                    <th>
+                        Score
+                    </th>
+                    <th>
+                        Perks
+                    </th>
+                    <th>
+                        Score
+                    </th>
+                    <th>
+                        Perks
+                    </th>
+                    <th>
+                        Score
+                    </th>
+                    <th>
+                        Perks
+                    </th>
+                    <th>
+                        Score
+                    </th>
+                    <th>
+                        Perks
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {monkeys.map(monkey => (
+                    <tr key={monkey.id}>
+                        <td>
+                            {monkey.id}
+                        </td>
+                        <td>
+                            {monkey.name}
+                        </td>
+                        <td>
+                            {monkey.alphaScore}
+                        </td>
+                        <td>
+                            {monkey.maxAccuracy}
+                        </td>
+                        <td>
+                            {monkey.maxPassing}
+                        </td>
+                        <td>
+                            {monkey.maxDefense}
+                        </td>
+                        <td>
+                            {monkey.maxControl}
+                        </td>
+                        <td>
+                            {monkey.strikerMaxPotential}
+                        </td>
+                        <td>
+                            {monkey.strikerPerks.toFixed(2)}
+                            <br />
+                            {monkey.strikerPerksScore.toFixed(2) * 100}%
+                        </td>
+                        <td>
+                            {monkey.midfielderMaxPotential}
+                        </td>
+                        <td>
+                            {monkey.midfielderPerks.toFixed(2)}
+                            <br />
+                            {monkey.midfielderPerksScore.toFixed(2) * 100}%
+                        </td>
+                        <td>
+                            {monkey.defenderMaxPotential}
+                        </td>
+                        <td>
+                            {monkey.defenderPerks.toFixed(2)}
+                            <br />
+                            {monkey.defenderPerksScore.toFixed(2) * 100}%
+                        </td>
+                        <td>
+                            {monkey.goalkeeperMaxPotential}
+                        </td>
+                        <td>
+                            {monkey.goalkeeperPerks.toFixed(2)}
+                            <br />
+                            {monkey.goalkeeperPerksScore.toFixed(2) * 100}%
+                        </td>
+                        <td>
+                            {monkey.totalMaxPotential}
+                            <br />
+                            {monkey.totalMaxPotentialPercentage.toFixed(2) * 100}%
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
         </table>
     </div>
 }

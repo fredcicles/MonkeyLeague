@@ -1,0 +1,11 @@
+.monkeys-for-sale-page table,
+.monkeys-for-sale-page th,
+.monkeys-for-sale-page td  {
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+.monkeys-for-sale-page th,
+.monkeys-for-sale-page td  {
+    padding: 5px 10px;
+}
