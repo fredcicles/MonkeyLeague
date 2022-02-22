@@ -8,7 +8,11 @@ const baseUrl = 'https://api-mainnet.magiceden.dev/v2'
 const getAuctionList = async (symbol, offset = 0) => {
     const url = `${baseUrl}/collections/${symbol}/listings?offset=${offset}`
     const response = await fetch(url)
-    return response
+
+    if (response.status === 200) {
+        const json = await response.json()
+        return json
+    }
 }
 
 
@@ -18,7 +22,11 @@ const getAuctionList = async (symbol, offset = 0) => {
 const getToken = async (id) => {
     const url = `${baseUrl}/tokens/${id}`
     const response = await fetch(url)
-    return response
+
+    if (response.status === 200) {
+        const json = await response.json()
+        return json
+    }
 }
 
 
