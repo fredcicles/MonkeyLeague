@@ -45,7 +45,11 @@ export const Skills = {
     Accuracy: TraitNames.Accuracy,
     Control: TraitNames.Control,
     Defense: TraitNames.Defense,
-    Passing: TraitNames.Passing
+    Passing: TraitNames.Passing,
+    MaxAccuracy: TraitNames.MaxAccuracy,
+    MaxControl: TraitNames.MaxControl,
+    MaxDefense: TraitNames.MaxDefense,
+    MaxPassing: TraitNames.MaxPassing,
 }
 
 export const Perks = {
@@ -70,24 +74,24 @@ export const FieldPositionNames = {
     Goalkeeper: 'goalkeeper'
 }
 
-export const FieldPositionPerks = [
+export const FieldPositionPerks_Weighted = [
     {
         FieldPosition: FieldPositionNames.Striker,
         Skills: [
             {
-                Name: Skills.Accuracy,
+                Name: Skills.MaxAccuracy,
                 Weight: 4
             },
             {
-                Name: Skills.Control,
+                Name: Skills.MaxControl,
                 Weight: 3
             },
             {
-                Name: Skills.Passing,
+                Name: Skills.MaxPassing,
                 Weight: 2
             },
             {
-                Name: Skills.Defense,
+                Name: Skills.MaxDefense,
                 Weight: 1
             }
         ],
@@ -97,19 +101,19 @@ export const FieldPositionPerks = [
         FieldPosition: FieldPositionNames.Midfielder,
         Skills: [
             {
-                Name: Skills.Accuracy,
+                Name: Skills.MaxAccuracy,
                 Weight: 2
             },
             {
-                Name: Skills.Control,
+                Name: Skills.MaxControl,
                 Weight: 3
             },
             {
-                Name: Skills.Passing,
+                Name: Skills.MaxPassing,
                 Weight: 4
             },
             {
-                Name: Skills.Defense,
+                Name: Skills.MaxDefense,
                 Weight: 1
             }
         ],
@@ -119,19 +123,19 @@ export const FieldPositionPerks = [
         FieldPosition: FieldPositionNames.Defender,
         Skills: [
             {
-                Name: Skills.Accuracy,
+                Name: Skills.MaxAccuracy,
                 Weight: 1
             },
             {
-                Name: Skills.Control,
+                Name: Skills.MaxControl,
                 Weight: 2
             },
             {
-                Name: Skills.Passing,
+                Name: Skills.MaxPassing,
                 Weight: 3
             },
             {
-                Name: Skills.Defense,
+                Name: Skills.MaxDefense,
                 Weight: 4
             }
         ],
@@ -141,20 +145,111 @@ export const FieldPositionPerks = [
         FieldPosition: FieldPositionNames.Goalkeeper,
         Skills: [
             {
-                Name: Skills.Accuracy,
-                Weight: 2
-            },
-            {
-                Name: Skills.Control,
-                Weight: 3
-            },
-            {
-                Name: Skills.Passing,
+                Name: Skills.MaxAccuracy,
                 Weight: 1
             },
             {
-                Name: Skills.Defense,
+                Name: Skills.MaxControl,
+                Weight: 3
+            },
+            {
+                Name: Skills.MaxPassing,
+                Weight: 2
+            },
+            {
+                Name: Skills.MaxDefense,
                 Weight: 4
+            }
+        ],
+        Perks: [Perks.GoldenGloves, Perks.GoalieResistance, Perks.GoalieLongBall]
+    }
+]
+
+export const FieldPositionPerks = [
+    {
+        FieldPosition: FieldPositionNames.Striker,
+        Skills: [
+            {
+                Name: Skills.MaxAccuracy,
+                Weight: 1
+            },
+            {
+                Name: Skills.MaxControl,
+                Weight: 0
+            },
+            {
+                Name: Skills.MaxPassing,
+                Weight: 0
+            },
+            {
+                Name: Skills.MaxDefense,
+                Weight: 0
+            }
+        ],
+        Perks: [Perks.PrecisionShot, Perks.ProtectiveHolding, Perks.HardHeader]
+    },
+    {
+        FieldPosition: FieldPositionNames.Midfielder,
+        Skills: [
+            {
+                Name: Skills.MaxAccuracy,
+                Weight: 0
+            },
+            {
+                Name: Skills.MaxControl,
+                Weight: 0
+            },
+            {
+                Name: Skills.MaxPassing,
+                Weight: 1
+            },
+            {
+                Name: Skills.MaxDefense,
+                Weight: 0
+            }
+        ],
+        Perks: [Perks.FlankPass, Perks.ExtremePressing, Perks.PassInterception]
+    },
+    {
+        FieldPosition: FieldPositionNames.Defender,
+        Skills: [
+            {
+                Name: Skills.MaxAccuracy,
+                Weight: 0
+            },
+            {
+                Name: Skills.MaxControl,
+                Weight: 1
+            },
+            {
+                Name: Skills.MaxPassing,
+                Weight: 0
+            },
+            {
+                Name: Skills.MaxDefense,
+                Weight: 0
+            }
+        ],
+        Perks: [Perks.HardTackle, Perks.DefensiveAwareness, Perks.LastStandDefense]
+    },
+    {
+        FieldPosition: FieldPositionNames.Goalkeeper,
+        Skills: [
+            {
+                Name: Skills.MaxAccuracy,
+                Weight: 0
+            },
+            {
+                Name: Skills.MaxControl,
+                Weight: 0
+            },
+            {
+                Name: Skills.MaxPassing,
+                Weight: 0
+            },
+            {
+                Name: Skills.MaxDefense,
+                Weight: 1
             }
         ],
         Perks: [Perks.GoldenGloves, Perks.GoalieResistance, Perks.GoalieLongBall]

@@ -14,13 +14,13 @@ import Switch from '@mui/material/Switch'
 import EnhancedTableHead from './EnhancedTableHead'
 import EnhancedTableCell from './EnhancedTableCell'
 
-const EnhancedTable = ({ columns, rows }) => {
+const EnhancedTable = ({ columns, rows, hover=true }) => {
     const [order, setOrder] = React.useState('desc')
     const [orderBy, setOrderBy] = React.useState('id')
     const [selected, setSelected] = React.useState([])
     const [page, setPage] = React.useState(0)
     const [dense, setDense] = React.useState(false)
-    const [rowsPerPage, setRowsPerPage] = React.useState(5)
+    const [rowsPerPage, setRowsPerPage] = React.useState(10)
 
 
     const handleRequestSort = (event, property) => {
@@ -110,12 +110,12 @@ const EnhancedTable = ({ columns, rows }) => {
 
                                     return (
                                         <TableRow
-                                            hover
+                                            hover={hover}
                                             onClick={(event) => handleClick(event, row.name)}
                                             role='checkbox'
                                             aria-checked={isItemSelected}
                                             tabIndex={-1}
-                                            key={row.id}
+                                            key={row.id || row.tokenMint}
                                             selected={isItemSelected}
                                         >
                                             <TableCells columns={columns} row={row} />
@@ -155,7 +155,8 @@ const EnhancedTable = ({ columns, rows }) => {
 
 EnhancedTable.propTypes = {
     columns: PropTypes.array,
-    rows: PropTypes.array
+    rows: PropTypes.array,
+    hover: PropTypes.bool
 }
 
 export default EnhancedTable

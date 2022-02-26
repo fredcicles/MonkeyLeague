@@ -1,5 +1,14 @@
 # Monkey League Monkey NFT Analyzer
 
+This project is a web application written in JavaScript / React.
+
+Currently, the application downloads all for sale Monkey League listings from Magic Eden and then loads the details for each monkey.  Monkeys details will be displayed in a table as their data is loaded from Magic Eden.  
+
+Magic Eden's api is throttled making it impossible to load all 1200 monkeys details up front.  Due to this limitation, it takes over 10 minutes to load all ~1200 monkeys details.
+
+Besides displaying monkey details, there are additional calcualted values to help determine a monkey's value.
+
+
 ## Traits & Attributes
 
 Each Monkey NFT is born with its own unique genetic composition, based on a total of 32 traits and attributes — eleven Appearance, an Alpha Score, four game Skills, starting and Max Potential game Skill levels, and twelve game Perks, or action boosters.

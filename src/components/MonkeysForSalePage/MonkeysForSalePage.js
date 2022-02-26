@@ -1,31 +1,73 @@
 import React, { useEffect, useState } from 'react'
-import { getMonkeysForSale } from '../../services/monkey-league-service'
-import { formatRawMonkeyData } from '../../helpers/monkey.helper'
+import { getAllForSaleMonkeyListings, getMonkeyDetails } from '../../services/monkey-league-service'
+import { transformRawMonkeyData } from '../../helpers/monkey.helper'
 import MonkeyTable from '../MonkeyTable'
 import './styles.css'
 
-const MonkeysForSalePage = () => {
-    const [monkeys, setMonkeys] = useState([]);
-    const [sortField] = useState('alphaScore')
+const DELAY = 575 // # of seconds between each read
 
-    // Load the list of Monkeys
+const MonkeysForSalePage = () => {
+    const [listings, setListings] = useState([])
+    const [monkeys, setMonkeys] = useState([])
+    const [areListingsLoaded, setListingsLoaded] = useState(false)
+
+
+    // Load the listings of Monkeys from Magic Eden
     useEffect(() => {
-        getMonkeysForSale()
-            .then(monkeysForSale => {
-                const monkeysTransformed = formatRawMonkeyData(monkeysForSale)
-                setMonkeys(monkeysTransformed)
+        // Retrieve all of the listings (without details)
+        getAllForSaleMonkeyListings()
+            .then(_listings => {
+                setListings(_listings)
+                setListingsLoaded(true)
             })
     }, [])
 
-    const list = monkeys.sort((a,b) => {
-        if (a[sortField] < b[sortField]) return -1
-        if (a[sortField] > b[sortField]) return 1
-        return 0
-    })
+
+    // Load the details for the monkeys
+    useEffect(() => {
+        const scheduleLoadOfNextPage = () => {
+            setTimeout(() => {
+                loadMonkeyDetails()
+            }, DELAY)
+        }
+        
+        // Load the details for 1 monkey at a time
+        const loadMonkeyDetails = async () => {
+            // Only run this if there are actually listings
+            if (listings.length === 0) return
+
+            // List of 20 monkeys to look up details for
+            const listingToLookup = listings[0]
+
+            // Remove the 20 from the listings
+            const newListings = listings.slice(1)
+            
+            // Retrieve details for the next monkey
+            let details = await getMonkeyDetails(listingToLookup.tokenMint)
+            
+            // Combine the listing and the details
+            details = { ...listingToLookup, ...details }
+
+            // Transform the details in to a useful form to display
+            const formattedMonkey = transformRawMonkeyData(details)
+
+            // Add the new monkey to the list of monkeys
+            const newListOfMonkeys = [...monkeys, formattedMonkey]
+            
+            setMonkeys(newListOfMonkeys)
+            setListings(newListings)
+        }
+
+        scheduleLoadOfNextPage()
+    }, [listings])
+
 
     return <div className='monkeys-for-sale-page'>
-        <MonkeyTable monkeys={list} />
+        {!areListingsLoaded && 'Looking up listings...'}
+        {areListingsLoaded && listings.length > 0 && 'Looking up monkey details'}
+        {areListingsLoaded && <MonkeyTable monkeys={monkeys} />}
     </div>
 }
+
 
 export default MonkeysForSalePage

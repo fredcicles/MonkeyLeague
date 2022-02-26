@@ -1,18 +1,45 @@
 import React from 'react';
 import EnhancedTable from '../EnhancedTable'
+import './styles.css'
 
 const formatPercent = (value) => {
     return `${(value * 100).toFixed(0)}%`
 }
 
+const renderMaxPotential = (monkey, position) => {
+    const score = monkey[`${position}MaxPotential`]
+    return score ? score.toFixed(2) : ''
+}
+
+const renderPerks = (monkey, position) => {
+    const perk = monkey[`${position}Perks`]
+    const score = monkey[`${position}PerksScore`]
+    return perk ? `${perk.toFixed(2)} (${formatPercent(score)})` : ''
+}
+
+const renderTotalMaxPotential = (monkey) => {
+    return monkey.totalMaxPotential ? `${monkey.totalMaxPotential} (${formatPercent(monkey.totalMaxPotentialPercentage)})` : ''
+}
+
+const createLink = (monkey, linkField, displayField) => {
+    return <a href={monkey[linkField]} target='_blank'>{monkey[displayField]}</a>
+}
+
+
 const columns = [
     {
         label: 'ID',
         id: 'id',
+        renderData: monkey => createLink(monkey, 'link', 'id'),
     },
     {
         label: 'Name',
         id: 'name',
+        renderData: monkey => createLink(monkey, 'link', 'name'),
+    },
+    {
+        label: <>Price<br/>SOL</>,
+        id: 'price',
     },
     {
         label: <>Alpha<br />Score</>,
@@ -38,6 +65,11 @@ const columns = [
             {
                 label: 'Control',
                 id: 'maxControl',
+            },
+            {
+                label: 'Sum',
+                id: 'totalMaxPotential',
+                renderData: monkey => renderTotalMaxPotential(monkey)
             }
         ]
     },
@@ -49,11 +81,12 @@ const columns = [
             {
                 label: 'Score',
                 id: 'strikerMaxPotential',
+                renderData: monkey => renderMaxPotential(monkey, 'striker')
             },
             {
                 label: 'Perks',
                 id: 'strikerPerks',
-                renderData: (monkey) => `${monkey.strikerPerks.toFixed(2)} (${formatPercent(monkey.strikerPerksScore)})`
+                renderData: monkey => renderPerks(monkey, 'striker')
             }
         ]
     },
@@ -64,12 +97,13 @@ const columns = [
         columns: [
             {
                 label: 'Score',
-                id: 'midfielderMaxPotential'
+                id: 'midfielderMaxPotential',
+                renderData: monkey => renderMaxPotential(monkey, 'midfielder')
             },
             {
                 label: 'Perks',
                 id: 'midfielderPerks',
-                renderData: (monkey) => `${monkey.midfielderPerks.toFixed(2)} (${formatPercent(monkey.midfielderPerksScore)})`
+                renderData: (monkey) => renderPerks(monkey, 'midfielder')
             }
         ]
     },
@@ -80,12 +114,13 @@ const columns = [
         columns: [
             {
                 label: 'Score',
-                id: 'defenderMaxPotential'
+                id: 'defenderMaxPotential',
+                renderData: monkey => renderMaxPotential(monkey, 'defender')
             },
             {
                 label: 'Perks',
                 id: 'defenderPerks',
-                renderData: (monkey) => `${monkey.defenderPerks.toFixed(2)} (${formatPercent(monkey.defenderPerksScore)})`
+                renderData: (monkey) => renderPerks(monkey, 'defender')
             }
         ]
     },
@@ -96,24 +131,28 @@ const columns = [
         columns: [
             {
                 label: 'Score',
-                id: 'goalkeeperMaxPotential'
+                id: 'goalkeeperMaxPotential',
+                renderData: monkey => renderMaxPotential(monkey, 'goalkeeper')
             },
             {
                 label: 'Perks',
                 id: 'goalkeeperPerks',
-                renderData: (monkey) => `${monkey.goalkeeperPerks.toFixed(2)} (${formatPercent(monkey.goalkeeperPerksScore)})`
+                renderData: (monkey) => renderPerks(monkey, 'goalkeeper')
             }
         ]
     },
     {
-        label: <>Total Potential<br />300 - 400</>,
-        id: 'totalMaxPotential',
-        renderData: (monkey) => `${monkey.totalMaxPotential} (${formatPercent(monkey.totalMaxPotentialPercentage)})`
+        id: 'maxPotential',
+        label: 'Max Potential'
     }
 ]
 
 const MonkeyTable = ({ monkeys }) => {
-    return (<EnhancedTable columns={columns} rows={monkeys} title="Monkeys" />)
+    return (
+        <div className='monkey-table'>
+            <EnhancedTable columns={columns} rows={monkeys} hover={false} />
+        </div>
+    )
 }
 
 export default MonkeyTable
