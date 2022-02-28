@@ -8,6 +8,8 @@ import './Filter.css'
 const ALPHA_SCORE_RANGE_DEFAULT = [180, 800]
 const SKILL_RANGE_DEFAULT = [75, 100]
 const PRICE_RANGE_DEFAULT = [0, '']
+const MAX_POTENTIAL_DEFAULT = 'All'
+
 const POSITIONS = [
     'All',
     'Striker',
@@ -18,7 +20,7 @@ const POSITIONS = [
 
 const Filter = ({ filters, onChange }) => {
     const [alphaScoreRange, setAlphaScoreRange] = useState(ALPHA_SCORE_RANGE_DEFAULT)
-    const [position, setPosition] = useState('')
+    const [maxPotential, setMaxPotential] = useState(MAX_POTENTIAL_DEFAULT)
     const [priceRange, setPriceRange] = useState(PRICE_RANGE_DEFAULT)
 
     const [accuracyRange, setAccuracyRange] = useState(SKILL_RANGE_DEFAULT)
@@ -29,38 +31,38 @@ const Filter = ({ filters, onChange }) => {
 
     const handleAccuracyChange = range => {
         setAccuracyRange(range)
-        onChange({ accuracyRange: range, alphaScoreRange, controlRange, defenseRange, passingRange, position, priceRange })
+        onChange({ accuracyRange: range, alphaScoreRange, controlRange, defenseRange, passingRange, maxPotential, priceRange })
     }
 
     const handleAlphaScoreChange = range => {
         setAlphaScoreRange(range)
-        onChange({ accuracyRange, alphaScoreRange: range, controlRange, defenseRange, passingRange, position, priceRange })
+        onChange({ accuracyRange, alphaScoreRange: range, controlRange, defenseRange, passingRange, maxPotential, priceRange })
     }
 
     const handleControlChange = range => {
         setControlRange(range)
-        onChange({ accuracyRange, alphaScoreRange, controlRange: range, defenseRange, passingRange, position, priceRange })
+        onChange({ accuracyRange, alphaScoreRange, controlRange: range, defenseRange, passingRange, maxPotential, priceRange })
     }
 
     const handleDefenseChange = range => {
         setDefenseRange(range)
-        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange: range, passingRange, position, priceRange })
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange: range, passingRange, maxPotential, priceRange })
     }
 
     const handlePassingChange = range => {
         setPassingRange(range)
-        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange, passingRange: range, position, priceRange })
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange, passingRange: range, maxPotential, priceRange })
     }
 
-    const handlePositionChange = event => {
+    const handleMaxPotentialChange = event => {
         const value = event.target.value
-        setPosition(value)
-        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange, passingRange, position: value, priceRange })
+        setMaxPotential(value)
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange, passingRange, maxPotential: value, priceRange })
     }
 
     const handlePriceChange = range => {
         setPriceRange(range)
-        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange, passingRange, position, priceRange: range })
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange, passingRange, maxPotential, priceRange: range })
     }
 
     
@@ -112,10 +114,10 @@ const Filter = ({ filters, onChange }) => {
 
             <TextField
                 select
-                label='Position'
-                className='position-filter'
-                onChange={handlePositionChange}
-                value={position}
+                label='Max Potential'
+                className='max-potential-filter'
+                onChange={handleMaxPotentialChange}
+                value={maxPotential}
             >
                 {POSITIONS.map(option => (
                     <MenuItem key={option} value={option}>

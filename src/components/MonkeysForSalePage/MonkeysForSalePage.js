@@ -13,7 +13,7 @@ const FILTERS_DEFAULT = {
     controlRange: [75, 100],
     defenseRange: [75, 100],
     passingRange: [75, 100],
-    position: 'All',
+    maxPotential: 'All',
     priceRange: [0, '']
 }
 
@@ -112,7 +112,7 @@ const MonkeysForSalePage = () => {
         const controlLowMatch = monkey.maxControl >= filters.controlRange[0]
         const controlHighMatch = monkey.maxControl <= filters.controlRange[1]
 
-        const position = filters.position === 'All' || monkey.maxPotential === filters.position
+        const maxPotential = filters.maxPotential === 'All' || monkey.maxPotential === filters.maxPotential
 
         return priceLowMatch && priceHighMatch &&
             alphaScoreLowMatch && alphaScoreHighMatch &&
@@ -120,7 +120,7 @@ const MonkeysForSalePage = () => {
             passingLowMatch && passingHighMatch &&
             defenseLowMatch && defenseHighMatch &&
             controlLowMatch && controlHighMatch &&
-            position
+            maxPotential
     })
 
     return <div className='monkeys-for-sale-page'>
