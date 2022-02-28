@@ -1,5 +1,5 @@
 //  Monkey League specific queries
-import { getAuctionList, getToken } from './magic-eden-service.js'
+import { getAuctionList, getToken } from './magic-eden-service.mjs'
 
 const monkeyLeagueSymbol = 'monkeyball'
 
@@ -44,7 +44,7 @@ const getAllForSaleMonkeyListings = async () => {
 /*
  * Retrieve details for a list of Monkey League NFTs from Magic Eden
  */
-const getMonkeysDetails = async (monkeyIds) => {
+const getMonkeysDetails = async monkeyIds => {
     const monkeys = monkeyIds.map(async (id) => {
         const details = await getToken(id)
         return details
@@ -58,11 +58,10 @@ const getMonkeysDetails = async (monkeyIds) => {
 /*
  * Retrieve details for a single Monkey League NFT from Magic Eden
  */
-const getMonkeyDetails = async (monkeyId) => {
+const getMonkeyDetails = async monkeyId => {
     const details = await getToken(monkeyId)
     return details
 }
 
 
 export { getAllForSaleMonkeyListings, getMonkeyDetails, getMonkeysDetails, getMonkeysForSale }
-

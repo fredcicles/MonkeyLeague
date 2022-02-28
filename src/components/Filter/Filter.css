@@ -1,0 +1,17 @@
+.filter {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px;
+}
+
+.price-filter .min-value, 
+.price-filter .max-value,
+.alpha-score-filter .min-value, 
+.alpha-score-filter .max-value {
+    width: 50px;
+    margin: 0 5px;
+}
+
+.position-filter {
+    width: 120px;
+}

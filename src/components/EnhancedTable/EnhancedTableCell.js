@@ -2,7 +2,7 @@ import React from 'react'
 import TableCell from '@mui/material/TableCell'
 
 const EnhancedTableCell = ({ column, row }) => {
-    let className = column.number && 'number'
+    const className = column.className
 
     const content = column.renderData
         ? column.renderData(row, column.id)

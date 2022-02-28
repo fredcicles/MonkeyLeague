@@ -22,3 +22,7 @@
 .monkey-table td {
     text-align: center;
 }
+
+.experimental {
+    color: #c71e78 !important;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import EnhancedTable from '../EnhancedTable'
-import './styles.css'
+import './MonkeyTable.css'
 
 const formatPercent = (value) => {
     return `${(value * 100).toFixed(0)}%`
@@ -48,7 +48,7 @@ const columns = [
     {
         group: true,
         label: 'Skill Max Potential',
-        id: 'maxPotential',
+        id: 'skillsMaxPotential',
         columns: [
             {
                 label: 'Accuracy',
@@ -81,6 +81,7 @@ const columns = [
             {
                 label: 'Score',
                 id: 'strikerMaxPotential',
+                className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'striker')
             },
             {
@@ -98,6 +99,7 @@ const columns = [
             {
                 label: 'Score',
                 id: 'midfielderMaxPotential',
+                className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'midfielder')
             },
             {
@@ -115,6 +117,7 @@ const columns = [
             {
                 label: 'Score',
                 id: 'defenderMaxPotential',
+                className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'defender')
             },
             {
@@ -132,6 +135,7 @@ const columns = [
             {
                 label: 'Score',
                 id: 'goalkeeperMaxPotential',
+                className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'goalkeeper')
             },
             {
@@ -143,7 +147,8 @@ const columns = [
     },
     {
         id: 'maxPotential',
-        label: 'Max Potential'
+        label: 'Max Potential',
+        className: 'experimental'
     }
 ]
 
