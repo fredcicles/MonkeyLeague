@@ -2,7 +2,7 @@
 // Download the details for each NFT in the listings
 // Save the output
 import fs from 'fs'
-import { getAllForSaleMonkeyListings, getMonkeyDetails } from './monkey-league-service.mjs'
+import { getAllForSaleMonkeyListings, getMonkeyDetails } from './services/monkey-league-service.mjs'
 
 const DELAY = 700
 
@@ -44,7 +44,7 @@ const retrieveMonkeyDetails = async (ids) => {
 
 const loadDataFromFile = () => {
     //const data = fs.readFileSync('../src/data/monkeys.json')
-    const data = fs.readFileSync('./monkeys.json')
+    const data = fs.readFileSync('./data/monkeys.json')
     return JSON.parse(data)
 }
 
@@ -68,8 +68,8 @@ const app = async () => {
 
     const monkeys = await retrieveMonkeyDetails(listings.map(listing => listing.tokenMint))
 
-    await saveDataToFile('./listings.json', listings)
-    await saveDataToFile('./monkeys.json', monkeys)
+    await saveDataToFile('./data/listings.json', listings)
+    await saveDataToFile('./data/monkeys.json', monkeys)
 
     console.log("Bye!")
 }
