@@ -68,8 +68,8 @@ const columns = [
             },
             {
                 label: 'Sum',
-                id: 'totalMaxPotential',
-                renderData: monkey => renderTotalMaxPotential(monkey)
+                id: 'totalMaxPotential'//,
+                //renderData: monkey => renderTotalMaxPotential(monkey)
             }
         ]
     },
@@ -146,8 +146,13 @@ const columns = [
         ]
     },
     {
+        id: 'totalPerksScore',
+        label: <>Total<br/>Perks</>,
+        renderData: (monkey) => renderPerks(monkey, 'total')
+    },
+    {
         id: 'maxPotential',
-        label: 'Max Potential',
+        label: <>Max<br/>Potential</>,
         className: 'experimental'
     }
 ]

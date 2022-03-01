@@ -102,33 +102,33 @@ const MonkeysForSalePage = () => {
     const filteredMonkeys = monkeys.filter(monkey => {
         if (!filters) return true
 
-        const priceLowMatch = monkey.price >= filters.priceRange[0]
-        const priceHighMatch = !filters.priceRange[1] || monkey.price <= filters.priceRange[1]
-        const alphaScoreLowMatch = monkey.alphaScore >= filters.alphaScoreRange[0]
-        const alphaScoreHighMatch = monkey.alphaScore <= filters.alphaScoreRange[1]
+        const priceLowMatch = monkey.price >= Number(filters.priceRange[0])
+        const priceHighMatch = !filters.priceRange[1] || monkey.price <= Number(filters.priceRange[1])
+        const alphaScoreLowMatch = monkey.alphaScore >= Number(filters.alphaScoreRange[0])
+        const alphaScoreHighMatch = !filters.alphaScoreRange[1] || monkey.alphaScore <= Number(filters.alphaScoreRange[1])
 
         // Skills
-        const accuracyLowMatch = monkey.maxAccuracy >= filters.accuracyRange[0]
-        const accuracyHighMatch = monkey.maxAccuracy <= filters.accuracyRange[1]
-        const passingLowMatch = monkey.maxPassing >= filters.passingRange[0]
-        const passingHighMatch = monkey.maxPassing <= filters.passingRange[1]
-        const defenseLowMatch = monkey.maxDefense >= filters.defenseRange[0]
-        const defenseHighMatch = monkey.maxDefense <= filters.defenseRange[1]
-        const controlLowMatch = monkey.maxControl >= filters.controlRange[0]
-        const controlHighMatch = monkey.maxControl <= filters.controlRange[1]
+        const accuracyLowMatch = monkey.maxAccuracy >= Number(filters.accuracyRange[0])
+        const accuracyHighMatch = !filters.accuracyRange[1] || monkey.maxAccuracy <= Number(filters.accuracyRange[1])
+        const passingLowMatch = monkey.maxPassing >= Number(filters.passingRange[0])
+        const passingHighMatch = !filters.passingRange[1] || monkey.maxPassing <= Number(filters.passingRange[1])
+        const defenseLowMatch = monkey.maxDefense >= Number(filters.defenseRange[0])
+        const defenseHighMatch = !filters.defenseRange[1] || monkey.maxDefense <= Number(filters.defenseRange[1])
+        const controlLowMatch = monkey.maxControl >= Number(filters.controlRange[0])
+        const controlHighMatch = !filters.controlRange[1] || monkey.maxControl <= Number(filters.controlRange[1])
 
-        const skillsSumLowMatch = monkey.totalMaxPotential >= filters.skillsSumRange[0]
-        const skillsSumHighMatch = monkey.totalMaxPotential <= filters.skillsSumRange[1]
+        const skillsSumLowMatch = monkey.totalMaxPotential >= Number(filters.skillsSumRange[0])
+        const skillsSumHighMatch = !filters.skillsSumRange[1] || monkey.totalMaxPotential <= Number(filters.skillsSumRange[1])
 
         // Perks
-        const strikerPerksLowMatch = monkey.strikerPerksScore * 100 >= filters.strikerPerksRange[0]
-        const strikerPerksHighMatch = monkey.strikerPerksScore * 100 <= filters.strikerPerksRange[1]
-        const midfielderPerksLowMatch = monkey.midfielderPerksScore * 100 >= filters.midfielderPerksRange[0]
-        const midfielderPerksHighMatch = monkey.midfielderPerksScore * 100 <= filters.midfielderPerksRange[1]
-        const defenderPerksLowMatch = monkey.defenderPerksScore * 100 >= filters.defenderPerksRange[0]
-        const defenderPerksHighMatch = monkey.defenderPerksScore * 100 <= filters.defenderPerksRange[1]
-        const goalkeeperPerksLowMatch = monkey.goalkeeperPerksScore * 100 >= filters.goalkeeperPerksRange[0]
-        const goalkeeperPerksHighMatch = monkey.goalkeeperPerksScore * 100 <= filters.goalkeeperPerksRange[1]
+        const strikerPerksLowMatch = monkey.strikerPerksScore * 100 >= Number(filters.strikerPerksRange[0])
+        const strikerPerksHighMatch = !filters.strikerPerksRange[1] || monkey.strikerPerksScore * 100 <= Number(filters.strikerPerksRange[1])
+        const midfielderPerksLowMatch = monkey.midfielderPerksScore * 100 >= Number(filters.midfielderPerksRange[0])
+        const midfielderPerksHighMatch = !filters.midfielderPerksRange[1] || monkey.midfielderPerksScore * 100 <= Number(filters.midfielderPerksRange[1])
+        const defenderPerksLowMatch = monkey.defenderPerksScore * 100 >= Number(filters.defenderPerksRange[0])
+        const defenderPerksHighMatch = !filters.defenderPerksRange[1] || monkey.defenderPerksScore * 100 <= Number(filters.defenderPerksRange[1])
+        const goalkeeperPerksLowMatch = monkey.goalkeeperPerksScore * 100 >= Number(filters.goalkeeperPerksRange[0])
+        const goalkeeperPerksHighMatch = !filters.goalkeeperPerksRange[1] || monkey.goalkeeperPerksScore * 100 <= Number(filters.goalkeeperPerksRange[1])
 
         const maxPotential = filters.maxPotential === 'All' || monkey.maxPotential === filters.maxPotential
 

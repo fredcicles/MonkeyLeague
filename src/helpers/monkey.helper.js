@@ -83,9 +83,13 @@ export const transformRawMonkeyData = monkey => {
         Number(getTraitValue(monkey, TraitNames.MaxControl))
 
     const strikerPerks = getFieldPositionPerksTotal(monkey, FieldPositionNames.Striker)
+    const strikerPerksScore = strikerPerks / MAX_PERKS_STRIKER
     const midfielderPerks = getFieldPositionPerksTotal(monkey, FieldPositionNames.Midfielder)
+    const midfielderPerksScore = midfielderPerks / MAX_PERKS_MIDFIELDER
     const defenderPerks = getFieldPositionPerksTotal(monkey, FieldPositionNames.Defender)
+    const defenderPerksScore = defenderPerks / MAX_PERKS_DEFENDER
     const goalkeeperPerks = getFieldPositionPerksTotal(monkey, FieldPositionNames.Goalkeeper)
+    const goalkeeperPerksScore = goalkeeperPerks / MAX_PERKS_GOALKEEPER
 
     const strikerMaxPotential = getFieldPositionMaxPotential(monkey, FieldPositionNames.Striker, strikerPerks)
     const midfielderMaxPotential = getFieldPositionMaxPotential(monkey, FieldPositionNames.Midfielder, midfielderPerks)
@@ -105,19 +109,22 @@ export const transformRawMonkeyData = monkey => {
 
         strikerMaxPotential: strikerMaxPotential,
         strikerPerks: strikerPerks,
-        strikerPerksScore: strikerPerks / MAX_PERKS_STRIKER,
+        strikerPerksScore: strikerPerksScore,
 
         midfielderMaxPotential: midfielderMaxPotential,
         midfielderPerks: midfielderPerks,
-        midfielderPerksScore: midfielderPerks / MAX_PERKS_MIDFIELDER,
+        midfielderPerksScore: midfielderPerksScore,
 
         defenderMaxPotential: defenderMaxPotential,
         defenderPerks: defenderPerks,
-        defenderPerksScore: defenderPerks / MAX_PERKS_DEFENDER,
+        defenderPerksScore: defenderPerksScore,
 
         goalkeeperMaxPotential: goalkeeperMaxPotential,
         goalkeeperPerks: goalkeeperPerks,
-        goalkeeperPerksScore: goalkeeperPerks / MAX_PERKS_GOALKEEPER,
+        goalkeeperPerksScore: goalkeeperPerksScore,
+
+        totalPerks: strikerPerks + midfielderPerks + defenderPerks + goalkeeperPerks,
+        totalPerksScore: (strikerPerksScore + midfielderPerksScore + defenderPerksScore + goalkeeperPerksScore) / 4,
 
         totalMaxPotential: totalMaxPotential,
         totalMaxPotentialPercentage: totalMaxPotential / MAX_STATS,
