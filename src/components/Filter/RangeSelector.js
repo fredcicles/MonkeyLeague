@@ -39,11 +39,13 @@ const RangeSelector = ({ className, onChange, title, values }) => {
 }
 
 RangeSelector.propTypes = {
+    className: PropTypes.string,
     onChange: PropTypes.func,
     values: PropTypes.array,
 }
 
 RangeSelector.defaultProps = {
+    className: '',
     onChange: () => { },
     values: ['', ''],
 }

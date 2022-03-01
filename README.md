@@ -1,13 +1,16 @@
 # Monkey League Monkey NFT Analyzer
 
-This project is a web application written in JavaScript / React.
+This application is a tool for analyzing the Monkey League NFTs currently for sale on Magic Eden and consists of 2 parts.  
+1) A web application for listing and filtering the Monkey League NFTs available for sale on Magic Eden.
+2) A utility for downloading the details for the monkeys currently for sale on Magic Eden.  It is beneficial to run this utility before running the web application.
 
-Currently, the application downloads all for sale Monkey League listings from Magic Eden and then loads the details for each monkey.  Monkeys details will be displayed in a table as their data is loaded from Magic Eden.  
+When the web application starts, it downloads all of the lists from Magic Eden and then downloads the details for any Monkey League NFTs not already included in the data file.  It is a good idea to run the utilitiy before starting the web application in order to reduce the number of NFT details required to be downloaded by the web application during start up.
 
-Magic Eden's api is throttled making it impossible to load all 1200 monkeys details up front.  Due to this limitation, it takes over 10 minutes to load all ~1200 monkeys details.
+Magic Eden's api is throttled to 120 queries per minute.  The utility and the web application attempt to account for this making calls to the Magic Eden API.
 
-Besides displaying monkey details, there are additional calcualted values to help determine a monkey's value.
+Besides displaying monkey details, there are additional calcualted values to help determine a monkey's value.  These values are displayed in a pink font to easily identify.
 
+---
 
 ## Traits & Attributes
 

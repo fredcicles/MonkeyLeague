@@ -20,7 +20,7 @@ const EnhancedTable = ({ columns, rows, hover=true }) => {
     const [selected, setSelected] = React.useState([])
     const [page, setPage] = React.useState(0)
     const [dense, setDense] = React.useState(false)
-    const [rowsPerPage, setRowsPerPage] = React.useState(10)
+    const [rowsPerPage, setRowsPerPage] = React.useState(15)
 
 
     const handleRequestSort = (event, property) => {
@@ -136,7 +136,7 @@ const EnhancedTable = ({ columns, rows, hover=true }) => {
                     </Table>
                 </TableContainer>
                 <TablePagination
-                    rowsPerPageOptions={[5, 10, 25]}
+                    rowsPerPageOptions={[5, 10, 15, 25]}
                     component='div'
                     count={rows.length}
                     rowsPerPage={rowsPerPage}

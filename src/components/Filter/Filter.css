@@ -4,13 +4,24 @@
     margin: 5px;
 }
 
-.price-filter .min-value, 
-.price-filter .max-value,
-.alpha-score-filter .min-value, 
-.alpha-score-filter .max-value {
+.range-selector .min-value, 
+.range-selector .max-value {
     width: 50px;
     margin: 0 5px;
 }
+
+.range-selector .label {
+    font-size: 0.9em;
+    /*font-weight: 500;*/
+}
+
+/*
+.range-selector .controls {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+*/
 
 .max-potential-filter {
     width: 120px;

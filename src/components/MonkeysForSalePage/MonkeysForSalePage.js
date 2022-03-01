@@ -11,10 +11,15 @@ const FILTERS_DEFAULT = {
     accuracyRange: [75, 100],
     alphaScoreRange: [180, 800],
     controlRange: [75, 100],
+    defenderPerksRange: [0, 100],
     defenseRange: [75, 100],
-    passingRange: [75, 100],
+    goalkeeperPerksRange: [0, 100],
     maxPotential: 'All',
-    priceRange: [0, '']
+    midfielderPerksRange: [0, 100],
+    passingRange: [75, 100],
+    priceRange: [0, ''],
+    skillsSumRange: [300, 400],
+    strikerPerksRange: [0, 100]
 }
 
 const MonkeysForSalePage = () => {
@@ -112,6 +117,19 @@ const MonkeysForSalePage = () => {
         const controlLowMatch = monkey.maxControl >= filters.controlRange[0]
         const controlHighMatch = monkey.maxControl <= filters.controlRange[1]
 
+        const skillsSumLowMatch = monkey.totalMaxPotential >= filters.skillsSumRange[0]
+        const skillsSumHighMatch = monkey.totalMaxPotential <= filters.skillsSumRange[1]
+
+        // Perks
+        const strikerPerksLowMatch = monkey.strikerPerksScore * 100 >= filters.strikerPerksRange[0]
+        const strikerPerksHighMatch = monkey.strikerPerksScore * 100 <= filters.strikerPerksRange[1]
+        const midfielderPerksLowMatch = monkey.midfielderPerksScore * 100 >= filters.midfielderPerksRange[0]
+        const midfielderPerksHighMatch = monkey.midfielderPerksScore * 100 <= filters.midfielderPerksRange[1]
+        const defenderPerksLowMatch = monkey.defenderPerksScore * 100 >= filters.defenderPerksRange[0]
+        const defenderPerksHighMatch = monkey.defenderPerksScore * 100 <= filters.defenderPerksRange[1]
+        const goalkeeperPerksLowMatch = monkey.goalkeeperPerksScore * 100 >= filters.goalkeeperPerksRange[0]
+        const goalkeeperPerksHighMatch = monkey.goalkeeperPerksScore * 100 <= filters.goalkeeperPerksRange[1]
+
         const maxPotential = filters.maxPotential === 'All' || monkey.maxPotential === filters.maxPotential
 
         return priceLowMatch && priceHighMatch &&
@@ -120,6 +138,11 @@ const MonkeysForSalePage = () => {
             passingLowMatch && passingHighMatch &&
             defenseLowMatch && defenseHighMatch &&
             controlLowMatch && controlHighMatch &&
+            skillsSumLowMatch && skillsSumHighMatch &&
+            strikerPerksLowMatch && strikerPerksHighMatch &&
+            midfielderPerksLowMatch && midfielderPerksHighMatch &&
+            defenderPerksLowMatch && defenderPerksHighMatch &&
+            goalkeeperPerksLowMatch && goalkeeperPerksHighMatch &&
             maxPotential
     })
 

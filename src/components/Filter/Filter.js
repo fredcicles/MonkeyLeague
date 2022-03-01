@@ -6,9 +6,11 @@ import TextField from '@mui/material/TextField'
 import './Filter.css'
 
 const ALPHA_SCORE_RANGE_DEFAULT = [180, 800]
-const SKILL_RANGE_DEFAULT = [75, 100]
-const PRICE_RANGE_DEFAULT = [0, '']
 const MAX_POTENTIAL_DEFAULT = 'All'
+const PERKS_RANGE_DEFAULT = [0, 100]
+const PRICE_RANGE_DEFAULT = [0, '']
+const SKILL_RANGE_DEFAULT = [75, 100]
+const SKILLS_SUM_RANGE_DEFAULT = [300, 400]
 
 const POSITIONS = [
     'All',
@@ -27,56 +29,84 @@ const Filter = ({ filters, onChange }) => {
     const [passingRange, setPassingRange] = useState(SKILL_RANGE_DEFAULT)
     const [defenseRange, setDefenseRange] = useState(SKILL_RANGE_DEFAULT)
     const [controlRange, setControlRange] = useState(SKILL_RANGE_DEFAULT)
+    const [skillsSumRange, setSkillsSumRange] = useState(SKILLS_SUM_RANGE_DEFAULT)
 
+    const [strikerPerksRange, setStrikerPerksRange] = useState(PERKS_RANGE_DEFAULT)
+    const [midfielderPerksRange, setMidfielderPerksRange] = useState(PERKS_RANGE_DEFAULT)
+    const [defenderPerksRange, setDefenderPerksRange] = useState(PERKS_RANGE_DEFAULT)
+    const [goalkeeperPerksRange, setGoalkeeperPerksRange] = useState(PERKS_RANGE_DEFAULT)
 
     const handleAccuracyChange = range => {
         setAccuracyRange(range)
-        onChange({ accuracyRange: range, alphaScoreRange, controlRange, defenseRange, passingRange, maxPotential, priceRange })
+        onChange({ accuracyRange: range, alphaScoreRange, controlRange, defenderPerksRange, defenseRange, goalkeeperPerksRange, passingRange, maxPotential, midfielderPerksRange, priceRange, skillsSumRange, strikerPerksRange })
     }
 
     const handleAlphaScoreChange = range => {
         setAlphaScoreRange(range)
-        onChange({ accuracyRange, alphaScoreRange: range, controlRange, defenseRange, passingRange, maxPotential, priceRange })
+        onChange({ accuracyRange, alphaScoreRange: range, controlRange, defenderPerksRange, defenseRange, goalkeeperPerksRange, passingRange, maxPotential, midfielderPerksRange, priceRange, skillsSumRange, strikerPerksRange })
     }
 
     const handleControlChange = range => {
         setControlRange(range)
-        onChange({ accuracyRange, alphaScoreRange, controlRange: range, defenseRange, passingRange, maxPotential, priceRange })
+        onChange({ accuracyRange, alphaScoreRange, controlRange: range, defenderPerksRange, defenseRange, goalkeeperPerksRange, passingRange, maxPotential, midfielderPerksRange, priceRange, skillsSumRange, strikerPerksRange })
     }
 
     const handleDefenseChange = range => {
         setDefenseRange(range)
-        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange: range, passingRange, maxPotential, priceRange })
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenderPerksRange, defenseRange: range, goalkeeperPerksRange, passingRange, maxPotential, midfielderPerksRange, priceRange, skillsSumRange, strikerPerksRange })
     }
 
     const handlePassingChange = range => {
         setPassingRange(range)
-        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange, passingRange: range, maxPotential, priceRange })
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenderPerksRange, defenseRange, goalkeeperPerksRange, passingRange: range, maxPotential, midfielderPerksRange, priceRange, skillsSumRange, strikerPerksRange })
     }
 
     const handleMaxPotentialChange = event => {
         const value = event.target.value
         setMaxPotential(value)
-        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange, passingRange, maxPotential: value, priceRange })
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenderPerksRange, defenseRange, goalkeeperPerksRange, passingRange, maxPotential: value, midfielderPerksRange, priceRange, skillsSumRange, strikerPerksRange })
     }
 
     const handlePriceChange = range => {
         setPriceRange(range)
-        onChange({ accuracyRange, alphaScoreRange, controlRange, defenseRange, passingRange, maxPotential, priceRange: range })
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenderPerksRange, defenseRange, goalkeeperPerksRange, passingRange, maxPotential, midfielderPerksRange, priceRange: range, skillsSumRange, strikerPerksRange })
     }
 
+    const handleSkillsSumChange = range => {
+        setSkillsSumRange(range)
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenderPerksRange, defenseRange, goalkeeperPerksRange, passingRange, maxPotential, midfielderPerksRange, priceRange, skillsSumRange: range, strikerPerksRange })
+    }
     
+    const handleStrikerPerksChange = range => {
+        setStrikerPerksRange(range)
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenderPerksRange, defenseRange, goalkeeperPerksRange, passingRange, maxPotential, midfielderPerksRange, priceRange, skillsSumRange, strikerPerksRange: range })
+    }
+    
+    const handleMidfielderPerksChange = range => {
+        setMidfielderPerksRange(range)
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenderPerksRange, defenseRange, goalkeeperPerksRange, passingRange, maxPotential, midfielderPerksRange: range, priceRange, skillsSumRange, strikerPerksRange })
+    }
+    
+    const handleDefenderPerksChange = range => {
+        setDefenderPerksRange(range)
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenderPerksRange: range, defenseRange, goalkeeperPerksRange, passingRange, maxPotential, midfielderPerksRange, priceRange, skillsSumRange, strikerPerksRange })
+    }
+    
+    const handleGoalkeeperPerksChange = range => {
+        setGoalkeeperPerksRange(range)
+        onChange({ accuracyRange, alphaScoreRange, controlRange, defenderPerksRange, defenseRange, goalkeeperPerksRange: range, passingRange, maxPotential, midfielderPerksRange, priceRange, skillsSumRange, strikerPerksRange })
+    }
+
+
     return (
         <div className='filter'>
             <RangeSelector
-                className='price-filter'
                 onChange={handlePriceChange}
                 title='Price'
                 values={filters.priceRange}
                 range={[0, -1]}
             />
             <RangeSelector
-                className='alpha-score-filter'
                 onChange={handleAlphaScoreChange}
                 title='Alpha Score'
                 values={filters.alphaScoreRange}
@@ -84,32 +114,59 @@ const Filter = ({ filters, onChange }) => {
             />
 
             <RangeSelector
-                className='alpha-score-filter'
                 onChange={handleAccuracyChange}
                 title='Accuracy'
                 values={filters.accuracyRange}
                 range={SKILL_RANGE_DEFAULT}
             />
             <RangeSelector
-                className='alpha-score-filter'
                 onChange={handlePassingChange}
                 title='Passing'
                 values={filters.passingRange}
                 range={SKILL_RANGE_DEFAULT}
             />
             <RangeSelector
-                className='alpha-score-filter'
                 onChange={handleDefenseChange}
                 title='Defense'
                 values={filters.defenseRange}
                 range={SKILL_RANGE_DEFAULT}
             />
             <RangeSelector
-                className='alpha-score-filter'
                 onChange={handleControlChange}
                 title='Control'
                 values={filters.controlRange}
                 range={SKILL_RANGE_DEFAULT}
+            />
+            <RangeSelector
+                onChange={handleSkillsSumChange}
+                title='Skills Sum'
+                values={filters.skillsSumRange}
+                range={SKILLS_SUM_RANGE_DEFAULT}
+            />
+            
+            <RangeSelector
+                onChange={handleStrikerPerksChange}
+                title='Striker Perks'
+                values={filters.strikerPerksRange}
+                range={PERKS_RANGE_DEFAULT}
+            />
+            <RangeSelector
+                onChange={handleMidfielderPerksChange}
+                title='Midfielder Perks'
+                values={filters.midfielderPerksRange}
+                range={PERKS_RANGE_DEFAULT}
+            />
+            <RangeSelector
+                onChange={handleDefenderPerksChange}
+                title='Defender Perks'
+                values={filters.defenderPerksRange}
+                range={PERKS_RANGE_DEFAULT}
+            />
+            <RangeSelector
+                onChange={handleGoalkeeperPerksChange}
+                title='Goalkeeper Perks'
+                values={filters.goalkeeperPerksRange}
+                range={PERKS_RANGE_DEFAULT}
             />
 
             <TextField
