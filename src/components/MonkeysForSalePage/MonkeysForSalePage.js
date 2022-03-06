@@ -91,8 +91,9 @@ const MonkeysForSalePage = () => {
             setListings(newListings)
         }
 
-        // eslint-disable-line react-hooks/exhaustive-deps
         scheduleLoadOfNextPage()
+        // eslint-disable-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line
     }, [listings])
 
 
