@@ -66,34 +66,34 @@ const MonkeysForSalePage = () => {
             }, DELAY)
         }
 
+        // Load the details for 1 monkey at a time
+        const loadMonkeyDetails = async () => {
+            // Only run this if there are actually listings
+            if (listings.length === 0) return
+
+            // List of 20 monkeys to look up details for
+            const listingToLookup = listings[0]
+
+            // Remove the 20 from the listings
+            const newListings = listings.slice(1)
+
+            // Retrieve details for the next monkey
+            let details = await getMonkeyDetails(listingToLookup.tokenMint)
+
+            // Combine the listing and the details
+            // Transform the details in to a useful form to display
+            const formattedMonkey = transformRawMonkeyData({ ...listingToLookup, ...details })
+
+            // Add the new monkey to the list of monkeys
+            const newListOfMonkeys = [...monkeys, formattedMonkey]
+
+            setMonkeys(newListOfMonkeys)
+            setListings(newListings)
+        }
+
+        // eslint-disable-line react-hooks/exhaustive-deps
         scheduleLoadOfNextPage()
     }, [listings])
-
-
-    // Load the details for 1 monkey at a time
-    const loadMonkeyDetails = async () => {
-        // Only run this if there are actually listings
-        if (listings.length === 0) return
-
-        // List of 20 monkeys to look up details for
-        const listingToLookup = listings[0]
-
-        // Remove the 20 from the listings
-        const newListings = listings.slice(1)
-
-        // Retrieve details for the next monkey
-        let details = await getMonkeyDetails(listingToLookup.tokenMint)
-
-        // Combine the listing and the details
-        // Transform the details in to a useful form to display
-        const formattedMonkey = transformRawMonkeyData({ ...listingToLookup, ...details })
-
-        // Add the new monkey to the list of monkeys
-        const newListOfMonkeys = [...monkeys, formattedMonkey]
-
-        setMonkeys(newListOfMonkeys)
-        setListings(newListings)
-    }
 
 
     const handleFilterChange = (newFilters) => {
