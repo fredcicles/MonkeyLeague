@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import SavedMonkeys from '../../data/monkeys.json'
 import { getAllForSaleMonkeyListings, getMonkeyDetails } from '../../services/monkey-league-service.js'
 import { transformRawMonkeyData } from '../../helpers/monkey.helper'
 import MonkeyTable from '../MonkeyTable'
 import Filter from '../Filter'
-import SavedMonkeys from '../../data/monkeys.json'
+import TipJar from '../TipJar'
 import './MonkeysForSalePage.css'
 
 const DELAY = 575 // # of seconds between each read
@@ -65,33 +66,34 @@ const MonkeysForSalePage = () => {
             }, DELAY)
         }
 
-        // Load the details for 1 monkey at a time
-        const loadMonkeyDetails = async () => {
-            // Only run this if there are actually listings
-            if (listings.length === 0) return
-
-            // List of 20 monkeys to look up details for
-            const listingToLookup = listings[0]
-
-            // Remove the 20 from the listings
-            const newListings = listings.slice(1)
-
-            // Retrieve details for the next monkey
-            let details = await getMonkeyDetails(listingToLookup.tokenMint)
-
-            // Combine the listing and the details
-            // Transform the details in to a useful form to display
-            const formattedMonkey = transformRawMonkeyData({ ...listingToLookup, ...details })
-
-            // Add the new monkey to the list of monkeys
-            const newListOfMonkeys = [...monkeys, formattedMonkey]
-
-            setMonkeys(newListOfMonkeys)
-            setListings(newListings)
-        }
-
         scheduleLoadOfNextPage()
     }, [listings])
+
+
+    // Load the details for 1 monkey at a time
+    const loadMonkeyDetails = async () => {
+        // Only run this if there are actually listings
+        if (listings.length === 0) return
+
+        // List of 20 monkeys to look up details for
+        const listingToLookup = listings[0]
+
+        // Remove the 20 from the listings
+        const newListings = listings.slice(1)
+
+        // Retrieve details for the next monkey
+        let details = await getMonkeyDetails(listingToLookup.tokenMint)
+
+        // Combine the listing and the details
+        // Transform the details in to a useful form to display
+        const formattedMonkey = transformRawMonkeyData({ ...listingToLookup, ...details })
+
+        // Add the new monkey to the list of monkeys
+        const newListOfMonkeys = [...monkeys, formattedMonkey]
+
+        setMonkeys(newListOfMonkeys)
+        setListings(newListings)
+    }
 
 
     const handleFilterChange = (newFilters) => {
@@ -153,6 +155,7 @@ const MonkeysForSalePage = () => {
             <>
                 <Filter filters={filters} onChange={handleFilterChange} />
                 <MonkeyTable monkeys={filteredMonkeys} />
+                <TipJar />
             </>
         }
     </div>

@@ -23,6 +23,7 @@ const getFieldPositionMaxPotential = (monkey, fieldPosition, perks) => {
     return score * perks
 }
 
+/*
 const getFieldPositionMaxPotential_OLD = (monkey, fieldPosition) => {
     const score = FieldPositionPerks
         .find(position => position.FieldPosition === fieldPosition)
@@ -33,6 +34,7 @@ const getFieldPositionMaxPotential_OLD = (monkey, fieldPosition) => {
         }, 0)
     return score
 }
+*/
 
 const getFieldPositionPerksTotal = (monkey, fieldPosition) => {
     const score = FieldPositionPerks

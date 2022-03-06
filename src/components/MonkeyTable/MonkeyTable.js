@@ -17,12 +17,14 @@ const renderPerks = (monkey, position) => {
     return perk ? `${perk.toFixed(2)} (${formatPercent(score)})` : ''
 }
 
+/*
 const renderTotalMaxPotential = (monkey) => {
     return monkey.totalMaxPotential ? `${monkey.totalMaxPotential} (${formatPercent(monkey.totalMaxPotentialPercentage)})` : ''
 }
+*/
 
 const createLink = (monkey, linkField, displayField) => {
-    return <a href={monkey[linkField]} target='_blank'>{monkey[displayField]}</a>
+    return <a href={monkey[linkField]} target='_blank' rel='noreferrer'>{monkey[displayField]}</a>
 }
 
 

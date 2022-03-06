@@ -9,8 +9,6 @@ import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Switch from '@mui/material/Switch'
 import EnhancedTableHead from './EnhancedTableHead'
 import EnhancedTableCell from './EnhancedTableCell'
 
@@ -19,7 +17,6 @@ const EnhancedTable = ({ columns, rows, hover=true }) => {
     const [orderBy, setOrderBy] = React.useState('id')
     const [selected, setSelected] = React.useState([])
     const [page, setPage] = React.useState(0)
-    const [dense, setDense] = React.useState(false)
     const [rowsPerPage, setRowsPerPage] = React.useState(15)
 
 
@@ -62,11 +59,6 @@ const EnhancedTable = ({ columns, rows, hover=true }) => {
     }
 
 
-    const handleChangeDense = (event) => {
-        setDense(event.target.checked)
-    }
-
-
     const isSelected = (name) => selected.indexOf(name) !== -1
 
 
@@ -92,7 +84,6 @@ const EnhancedTable = ({ columns, rows, hover=true }) => {
                     <Table
                         sx={{ minWidth: 750 }}
                         aria-labelledby='tableTitle'
-                        size={dense ? 'small' : 'medium'}
                     >
                         <EnhancedTableHead
                             columns={columns}
@@ -126,7 +117,7 @@ const EnhancedTable = ({ columns, rows, hover=true }) => {
                                 <TableRow
                                     key='empty-rows'
                                     style={{
-                                        height: (dense ? 33 : 53) * emptyRows,
+                                        height: 53 * emptyRows,
                                     }}
                                 >
                                     <TableCell colSpan={6} />
@@ -145,10 +136,6 @@ const EnhancedTable = ({ columns, rows, hover=true }) => {
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 />
             </Paper>
-            <FormControlLabel
-                control={<Switch checked={dense} onChange={handleChangeDense} />}
-                label='Dense padding'
-            />
         </Box>
     )
 }
