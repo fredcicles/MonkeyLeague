@@ -1,5 +1,6 @@
 //  Generic methods for querying Magic Eden
-const baseUrl = 'https://api-mainnet.magiceden.dev/v2'
+//const baseUrl = 'https://api-mainnet.magiceden.dev/v2'
+const baseUrl = 'https://apmi-fredgohsman.azure-api.net'
 
 
 /*
