@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ml.ketl.com/static/css/main.4371f7db.css",
-    "main.js": "/ml.ketl.com/static/js/main.85e59f73.js",
-    "static/js/787.3e30f89a.chunk.js": "/ml.ketl.com/static/js/787.3e30f89a.chunk.js",
-    "static/media/monkey-league-text.png": "/ml.ketl.com/static/media/monkey-league-text.0e52528aa8322128d2c5.png",
-    "index.html": "/ml.ketl.com/index.html",
-    "main.4371f7db.css.map": "/ml.ketl.com/static/css/main.4371f7db.css.map",
-    "main.85e59f73.js.map": "/ml.ketl.com/static/js/main.85e59f73.js.map",
-    "787.3e30f89a.chunk.js.map": "/ml.ketl.com/static/js/787.3e30f89a.chunk.js.map"
+    "main.css": "/static/css/main.4371f7db.css",
+    "main.js": "/static/js/main.66df606b.js",
+    "static/js/787.3e30f89a.chunk.js": "/static/js/787.3e30f89a.chunk.js",
+    "static/media/monkey-league-text.png": "/static/media/monkey-league-text.0e52528aa8322128d2c5.png",
+    "index.html": "/index.html",
+    "main.4371f7db.css.map": "/static/css/main.4371f7db.css.map",
+    "main.66df606b.js.map": "/static/js/main.66df606b.js.map",
+    "787.3e30f89a.chunk.js.map": "/static/js/787.3e30f89a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4371f7db.css",
-    "static/js/main.85e59f73.js"
+    "static/js/main.66df606b.js"
   ]
 }
