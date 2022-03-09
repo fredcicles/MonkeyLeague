@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import SavedMonkeys from '../../data/monkeys.json'
 import { getAllForSaleMonkeyListings, getMonkeyDetails } from '../../services/monkey-league-service.js'
 import { transformRawMonkeyData } from '../../helpers/monkey.helper'
-import MonkeyTable from '../MonkeyTable'
+import Disclaimer from '../Disclaimer'
 import Filter from '../Filter'
+import MonkeyTable from '../MonkeyTable'
 import TipJar from '../TipJar'
 import './MonkeysForSalePage.css'
 
@@ -150,7 +151,12 @@ const MonkeysForSalePage = () => {
     })
 
     return <div className='monkeys-for-sale-page'>
-        {!areListingsLoaded && 'Looking up listings...'}
+        {!areListingsLoaded && (
+            <>
+                <div>Looking up listings...</div>
+                <Disclaimer className='body' />
+            </>
+        )}
         {areListingsLoaded && listings.length > 0 && 'Looking up monkey details'}
         {areListingsLoaded &&
             <>

@@ -1,0 +1,13 @@
+.disclaimer.footer {
+    max-width: 450px;
+    margin: 0 10px;
+}
+
+.disclaimer.body {
+    margin: 50px;
+    font-size: 2em;
+}
+
+.disclaimer .official {
+    font-weight: bold;
+}

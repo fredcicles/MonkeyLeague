@@ -1,3 +1,8 @@
+.monkey-table {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .monkey-table th {
     background-color: #FB0084;
     color: #FFF100;

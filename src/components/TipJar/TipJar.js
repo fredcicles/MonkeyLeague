@@ -1,5 +1,6 @@
 import addresses from '../../data/addresses.json'
 import Money from '@mui/icons-material/LocalAtm'
+import Disclaimer from '../Disclaimer'
 import './TipJar.css'
 
 const TipJar = () => {
@@ -47,6 +48,7 @@ const TipJar = () => {
                     </div>
                 ))}
             </div>
+            <Disclaimer className='footer' />
         </div>
     )
 }

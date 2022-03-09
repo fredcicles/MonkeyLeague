@@ -81,7 +81,7 @@ const columns = [
         label: 'Striker',
         columns: [
             {
-                label: 'Score',
+                label: 'Score*',
                 id: 'strikerMaxPotential',
                 className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'striker')
@@ -99,7 +99,7 @@ const columns = [
         label: 'Midfielder',
         columns: [
             {
-                label: 'Score',
+                label: 'Score*',
                 id: 'midfielderMaxPotential',
                 className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'midfielder')
@@ -117,7 +117,7 @@ const columns = [
         label: 'Defender',
         columns: [
             {
-                label: 'Score',
+                label: 'Score*',
                 id: 'defenderMaxPotential',
                 className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'defender')
@@ -135,7 +135,7 @@ const columns = [
         label: 'Goalkeeper',
         columns: [
             {
-                label: 'Score',
+                label: 'Score*',
                 id: 'goalkeeperMaxPotential',
                 className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'goalkeeper')
@@ -154,7 +154,7 @@ const columns = [
     },
     {
         id: 'maxPotential',
-        label: <>Max<br/>Potential</>,
+        label: <>Good<br/>At*</>,
         className: 'experimental'
     }
 ]
