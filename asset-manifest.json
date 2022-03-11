@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.0fce54fb.css",
-    "main.js": "/static/js/main.be55c055.js",
+    "main.css": "/static/css/main.9d4de205.css",
+    "main.js": "/static/js/main.1cd4fe73.js",
     "static/js/787.3e30f89a.chunk.js": "/static/js/787.3e30f89a.chunk.js",
     "static/media/monkey-league-text.png": "/static/media/monkey-league-text.0e52528aa8322128d2c5.png",
     "index.html": "/index.html",
-    "main.0fce54fb.css.map": "/static/css/main.0fce54fb.css.map",
-    "main.be55c055.js.map": "/static/js/main.be55c055.js.map",
+    "main.9d4de205.css.map": "/static/css/main.9d4de205.css.map",
+    "main.1cd4fe73.js.map": "/static/js/main.1cd4fe73.js.map",
     "787.3e30f89a.chunk.js.map": "/static/js/787.3e30f89a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0fce54fb.css",
-    "static/js/main.be55c055.js"
+    "static/css/main.9d4de205.css",
+    "static/js/main.1cd4fe73.js"
   ]
 }
