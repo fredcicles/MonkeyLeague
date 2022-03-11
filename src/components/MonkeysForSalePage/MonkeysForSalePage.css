@@ -9,3 +9,20 @@
 .monkeys-for-sale-page td  {
     padding: 5px 10px;
 }
+
+.monkeys-for-sale-page .loading-section {
+    margin: 50px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.monkeys-for-sale-page .loading-message {
+    font-size: 1.2em;
+    font-weight: 500;
+    background-color: #FB0084;
+    color: #FFF100;
+    padding: 5px 10px 8px 10px;
+    transform: skewX(-20deg);
+    border: solid 1px #FB0084;
+    border-radius: 2px;
+}

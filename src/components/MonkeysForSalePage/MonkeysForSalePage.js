@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import SavedMonkeys from '../../data/monkeys.json'
 import { getAllForSaleMonkeyListings, getMonkeyDetails } from '../../services/monkey-league-service.js'
 import { transformRawMonkeyData } from '../../helpers/monkey.helper'
-import Disclaimer from '../Disclaimer'
 import Filter from '../Filter'
+import ListingsLoadingMessage from './ListingsLoadingMessage'
 import MonkeyTable from '../MonkeyTable'
 import TipJar from '../TipJar'
 import './MonkeysForSalePage.css'
@@ -16,6 +16,7 @@ const FILTERS_DEFAULT = {
     defenderPerksRange: [0, 100],
     defenseRange: [75, 100],
     goalkeeperPerksRange: [0, 100],
+    idName: '',
     maxPotential: 'All',
     midfielderPerksRange: [0, 100],
     passingRange: [75, 100],
@@ -106,6 +107,16 @@ const MonkeysForSalePage = () => {
     const filteredMonkeys = monkeys.filter(monkey => {
         if (!filters) return true
 
+        let idNameMatch = true
+        if (filters.idName !== '') {
+            // Name is string; ID is number
+            if (isNaN(filters.idName)) {
+                idNameMatch = monkey.name.toLowerCase().includes(filters.idName.toLowerCase())
+            } else {
+                idNameMatch = monkey.id.includes(filters.idName)
+            }
+        }
+
         const priceLowMatch = monkey.price >= Number(filters.priceRange[0])
         const priceHighMatch = !filters.priceRange[1] || monkey.price <= Number(filters.priceRange[1])
         const alphaScoreLowMatch = monkey.alphaScore >= Number(filters.alphaScoreRange[0])
@@ -136,7 +147,8 @@ const MonkeysForSalePage = () => {
 
         const maxPotential = filters.maxPotential === 'All' || monkey.maxPotential === filters.maxPotential
 
-        return priceLowMatch && priceHighMatch &&
+        return idNameMatch &&
+            priceLowMatch && priceHighMatch &&
             alphaScoreLowMatch && alphaScoreHighMatch &&
             accuracyLowMatch && accuracyHighMatch &&
             passingLowMatch && passingHighMatch &&
@@ -151,12 +163,7 @@ const MonkeysForSalePage = () => {
     })
 
     return <div className='monkeys-for-sale-page'>
-        {!areListingsLoaded && (
-            <>
-                <div>Looking up listings...</div>
-                <Disclaimer className='body' />
-            </>
-        )}
+        <ListingsLoadingMessage visible={!areListingsLoaded} />
         {areListingsLoaded && listings.length > 0 && 'Looking up monkey details'}
         {areListingsLoaded &&
             <>

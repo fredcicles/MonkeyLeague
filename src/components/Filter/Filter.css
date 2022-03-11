@@ -4,6 +4,22 @@
     margin: 5px;
 }
 
+.text-selector {
+    width: 75px;
+}
+
+.text-selector .label {
+    font-size: 0.9em;
+}
+
+.text-selector .controls {
+    margin-top: 15px;
+}
+
+.text-selector .controls input {
+    text-align: center;
+}
+
 .range-selector .min-value, 
 .range-selector .max-value {
     width: 50px;
@@ -22,6 +38,10 @@
     border-radius: 4px;
 }
 */
+
+.range-selector .controls input {
+    text-align: center;
+}
 
 .max-potential-filter {
     width: 120px;
