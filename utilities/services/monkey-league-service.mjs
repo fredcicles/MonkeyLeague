@@ -1,37 +1,31 @@
 //  Monkey League specific queries
-import { getAuctionList, getToken } from './magic-eden-service.mjs'
+import { getPageOfNfts } from './magic-eden-service.mjs'
 
+const maxRecordsPerPage = 500
 const monkeyLeagueSymbol = 'monkeyball'
+const DELAY = 700
 
-/*
- * Retrieve 20 for sale Monkey League NFTs from Magic Eden
- */
-const getMonkeysForSale = async (offset = 0) => {
-    let monkeys = await getAuctionList(monkeyLeagueSymbol, offset)
-    monkeys = monkeys.map(async (monkey) => {
-
-        const details = await getToken(monkey.tokenMint)
-        return { ...monkey, ...details }
-    })
-    return await Promise.all(monkeys)
+const delay = (time) => {
+    console.log(`Waiting for ${time} milliseconds`)
+    return new Promise(resolve => setTimeout(resolve, time))
 }
-
 
 /*
  * Retrieve all the for sale listings of Monkey League NFTs from Magic Eden
  */
-const getAllForSaleMonkeyListings = async () => {
-    const maxListingsPerPage = 20
+const getAllMonkeys = async () => {
     let allListings = []
     let offset = 0
     let lastPage = false
 
     while (!lastPage) {
-        const pageOfListings = await getAuctionList(monkeyLeagueSymbol, offset)
+        const pageOfListings = await getPageOfNfts(monkeyLeagueSymbol, offset)
         allListings = allListings.concat(pageOfListings)
 
-        offset += maxListingsPerPage
-        lastPage = pageOfListings.length < maxListingsPerPage
+        console.log(`Retrieved Monkeys ${offset + 1} - ${offset + 1 + pageOfListings.length} from Magic Eden`)
+
+        offset += maxRecordsPerPage
+        lastPage = pageOfListings.length === 0
 
         // ONLY LOAD 1 PAGE FOR TESTING
         //lastPage = true
@@ -40,28 +34,4 @@ const getAllForSaleMonkeyListings = async () => {
     return allListings
 }
 
-
-/*
- * Retrieve details for a list of Monkey League NFTs from Magic Eden
- */
-const getMonkeysDetails = async monkeyIds => {
-    const monkeys = monkeyIds.map(async (id) => {
-        const details = await getToken(id)
-        return details
-    })
-
-    return await Promise.all(monkeys)
-}
-
-
-
-/*
- * Retrieve details for a single Monkey League NFT from Magic Eden
- */
-const getMonkeyDetails = async monkeyId => {
-    const details = await getToken(monkeyId)
-    return details
-}
-
-
-export { getAllForSaleMonkeyListings, getMonkeyDetails, getMonkeysDetails, getMonkeysForSale }
+export { getAllMonkeys }

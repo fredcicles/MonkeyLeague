@@ -6,6 +6,7 @@
         "node-fetch": "^3.2.0"
     },
     "scripts": {
-        "start": "node ./monkey-details-download.mjs"
+        "load": "node ./monkey-details-download.mjs",
+        "merge": "node ./merge-monkey-files.mjs"
     }
 }

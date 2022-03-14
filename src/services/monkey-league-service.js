@@ -30,8 +30,11 @@ const getAllForSaleMonkeyListings = async () => {
         const pageOfListings = await getAuctionList(monkeyLeagueSymbol, offset)
         allListings = allListings.concat(pageOfListings)
 
+        console.log(`Loaded listings ${offset + 1} - ${offset + 1 + pageOfListings.length} from Magic Eden`)
+
         offset += maxListingsPerPage
-        lastPage = pageOfListings.length < maxListingsPerPage
+        lastPage = pageOfListings.length === 0
+
 
         // ONLY LOAD 1 PAGE FOR TESTING
         //lastPage = true

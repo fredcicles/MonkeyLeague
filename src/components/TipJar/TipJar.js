@@ -35,11 +35,11 @@ const TipJar = () => {
             </div>
             <div className='addresses'>
                 {addresses.map(wallet => (
-                    <div className='wallet'>
+                    <div key={wallet.name} className='wallet'>
                         <div className='logo'>
                             <img src={`${process.env.PUBLIC_URL}/${wallet.logo}`} alt={`${wallet.name} Logo`} />
                         </div>
-                        <div class='tooltip' onClick={() => copyToClipboard(wallet)} onMouseOut={() => revertTooltipText(wallet)}>
+                        <div className='tooltip' onClick={() => copyToClipboard(wallet)} onMouseOut={() => revertTooltipText(wallet)}>
                             <div className='address'>
                                 {wallet.address}
                             </div>
