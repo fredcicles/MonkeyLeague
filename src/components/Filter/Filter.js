@@ -192,19 +192,27 @@ const Filter = ({ filters, onChange }) => {
                 range={PERKS_RANGE_DEFAULT}
             />
 
-            <TextField
-                select
-                label='Max Potential'
-                className='max-potential-filter'
-                onChange={handleMaxPotentialChange}
-                value={maxPotential}
-            >
-                {POSITIONS.map(option => (
-                    <MenuItem key={option} value={option}>
-                        {option}
-                    </MenuItem>
-                ))}
-            </TextField>
+            <div className='text-selector'>
+                <div className='label'>
+                    Good At
+                </div>
+                <div className='controls'>
+                    <TextField
+                        name='idName'
+                        className='idName'
+                        variant='standard'
+                        value={maxPotential}
+                        onChange={handleMaxPotentialChange}
+                        select
+                        >
+                        {POSITIONS.map(option => (
+                            <MenuItem key={option} value={option}>
+                                {option}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                </div>
+            </div>
         </div>
     )
 }
