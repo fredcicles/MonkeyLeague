@@ -21,20 +21,19 @@ const getMonkeysForSale = async (offset = 0) => {
  * Retrieve all the for sale listings of Monkey League NFTs from Magic Eden
  */
 const getAllForSaleMonkeyListings = async () => {
-    const maxListingsPerPage = 20
+    const pageSize = 20
     let allListings = []
     let offset = 0
-    let lastPage = false
+    let isLastPage = false
 
-    while (!lastPage) {
+    while (!isLastPage) {
         const pageOfListings = await getAuctionList(monkeyLeagueSymbol, offset)
         allListings = allListings.concat(pageOfListings)
 
         console.log(`Loaded listings ${offset + 1} - ${offset + 1 + pageOfListings.length} from Magic Eden`)
 
-        offset += maxListingsPerPage
-        lastPage = pageOfListings.length === 0
-
+        offset += pageSize
+        isLastPage = pageOfListings.length === 0
 
         // ONLY LOAD 1 PAGE FOR TESTING
         //lastPage = true

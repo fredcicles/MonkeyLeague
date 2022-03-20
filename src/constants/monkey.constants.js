@@ -175,7 +175,7 @@ export const FieldPositionPerks = [
             },
             {
                 Name: Skills.MaxControl,
-                Weight: 0
+                Weight: 1
             },
             {
                 Name: Skills.MaxPassing,
@@ -197,7 +197,7 @@ export const FieldPositionPerks = [
             },
             {
                 Name: Skills.MaxControl,
-                Weight: 0
+                Weight: 1
             },
             {
                 Name: Skills.MaxPassing,
@@ -227,7 +227,7 @@ export const FieldPositionPerks = [
             },
             {
                 Name: Skills.MaxDefense,
-                Weight: 0
+                Weight: 1
             }
         ],
         Perks: [Perks.HardTackle, Perks.DefensiveAwareness, Perks.LastStandDefense]
@@ -241,7 +241,7 @@ export const FieldPositionPerks = [
             },
             {
                 Name: Skills.MaxControl,
-                Weight: 0
+                Weight: 1
             },
             {
                 Name: Skills.MaxPassing,

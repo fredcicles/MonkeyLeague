@@ -81,7 +81,7 @@ const columns = [
         label: 'Striker',
         columns: [
             {
-                label: 'Score*',
+                label: <div title='Striker score based on Max Accuracy, Max Control and Striker Perks'>Score*</div>,
                 id: 'strikerMaxPotential',
                 className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'striker')
@@ -99,7 +99,7 @@ const columns = [
         label: 'Midfielder',
         columns: [
             {
-                label: 'Score*',
+                label: <div title='Midfielder score based on Max Passing, Max Control and Midfielder Perks'>Score*</div>,
                 id: 'midfielderMaxPotential',
                 className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'midfielder')
@@ -117,7 +117,7 @@ const columns = [
         label: 'Defender',
         columns: [
             {
-                label: 'Score*',
+                label: <div title='Defender score based on Max Defense, Max Control and Defender Perks'>Score*</div>,
                 id: 'defenderMaxPotential',
                 className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'defender')
@@ -135,7 +135,7 @@ const columns = [
         label: 'Goalkeeper',
         columns: [
             {
-                label: 'Score*',
+                label: <div title='Goalkeeper score based on Max Defense, Max Control and Goalkeeper Perks'>Score*</div>,
                 id: 'goalkeeperMaxPotential',
                 className: 'experimental',
                 renderData: monkey => renderMaxPotential(monkey, 'goalkeeper')
