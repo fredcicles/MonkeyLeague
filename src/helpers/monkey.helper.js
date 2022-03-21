@@ -104,9 +104,13 @@ export const transformRawMonkeyData = monkey => {
         price: monkey.price,
         link: `https://magiceden.io/item-details/${monkey.mintAddress}`,
         alphaScore: getTraitValue(monkey, TraitNames.AlphaScore),
+        accuracy: getTraitValue(monkey, TraitNames.Accuracy),
         maxAccuracy: getTraitValue(monkey, TraitNames.MaxAccuracy),
+        passing: getTraitValue(monkey, TraitNames.Passing),
         maxPassing: getTraitValue(monkey, TraitNames.MaxPassing),
+        defense: getTraitValue(monkey, TraitNames.Defense),
         maxDefense: getTraitValue(monkey, TraitNames.MaxDefense),
+        control: getTraitValue(monkey, TraitNames.Control),
         maxControl: getTraitValue(monkey, TraitNames.MaxControl),
 
         strikerMaxPotential: strikerMaxPotential,

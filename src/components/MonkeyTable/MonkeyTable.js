@@ -17,11 +17,13 @@ const renderPerks = (monkey, position) => {
     return perk ? `${perk.toFixed(2)} (${formatPercent(score)})` : ''
 }
 
-/*
-const renderTotalMaxPotential = (monkey) => {
-    return monkey.totalMaxPotential ? `${monkey.totalMaxPotential} (${formatPercent(monkey.totalMaxPotentialPercentage)})` : ''
+const renderSkill = (monkey, skill) => {
+    const skillName = `${skill[0].toUpperCase()}${skill.slice(1, skill.length)}`
+    const skillValue = monkey[skill]
+    const skillMaxValue = monkey[`max${skillName}`]
+
+    return <div title={`${skillValue} ${skillName} / ${skillMaxValue} Max ${skillName}`}>{`${skillValue} / ${skillMaxValue}`}</div>
 }
-*/
 
 const createLink = (monkey, linkField, displayField) => {
     return <a href={monkey[linkField]} target='_blank' rel='noreferrer'>{monkey[displayField]}</a>
@@ -44,7 +46,7 @@ const columns = [
         id: 'price',
     },
     {
-        label: <>Alpha<br />Score</>,
+        label: <div title='Alpha Score: 180  - 800'>Alpha<br />Score</div>,
         id: 'alphaScore',
     },
     {
@@ -53,25 +55,28 @@ const columns = [
         id: 'skillsMaxPotential',
         columns: [
             {
-                label: 'Accuracy',
+                label: <div title='Accuracy / Max Accuracy'>Accuracy</div>,
                 id: 'maxAccuracy',
+                renderData: monkey => renderSkill(monkey, 'accuracy')
             },
             {
-                label: 'Passing',
+                label: <div title='Passing / Max Passing'>Passing</div>,
                 id: 'maxPassing',
+                renderData: monkey => renderSkill(monkey, 'passing')
             },
             {
-                label: 'Defense',
+                label: <div title='Defense / Max Defense'>Defense</div>,
                 id: 'maxDefense',
+                renderData: monkey => renderSkill(monkey, 'defense')
             },
             {
-                label: 'Control',
+                label: <div title='Control / Max Control'>Control</div>,
                 id: 'maxControl',
+                renderData: monkey => renderSkill(monkey, 'control')
             },
             {
                 label: 'Sum',
-                id: 'totalMaxPotential'//,
-                //renderData: monkey => renderTotalMaxPotential(monkey)
+                id: 'totalMaxPotential'
             }
         ]
     },
@@ -87,7 +92,7 @@ const columns = [
                 renderData: monkey => renderMaxPotential(monkey, 'striker')
             },
             {
-                label: 'Perks',
+                label: <div title='Precision Shot, Protective Holding, Hard Header'>Perks</div>,
                 id: 'strikerPerks',
                 renderData: monkey => renderPerks(monkey, 'striker')
             }
@@ -105,7 +110,7 @@ const columns = [
                 renderData: monkey => renderMaxPotential(monkey, 'midfielder')
             },
             {
-                label: 'Perks',
+                label: <div title='Flank Pass, Extreme Pressing, Pass Interception'>Perks</div>,
                 id: 'midfielderPerks',
                 renderData: (monkey) => renderPerks(monkey, 'midfielder')
             }
@@ -123,7 +128,7 @@ const columns = [
                 renderData: monkey => renderMaxPotential(monkey, 'defender')
             },
             {
-                label: 'Perks',
+                label: <div title='Hard Tackle, Defensive Awareness, Last Stand Defense'>Perks</div>,
                 id: 'defenderPerks',
                 renderData: (monkey) => renderPerks(monkey, 'defender')
             }
@@ -141,7 +146,7 @@ const columns = [
                 renderData: monkey => renderMaxPotential(monkey, 'goalkeeper')
             },
             {
-                label: 'Perks',
+                label: <div title='Golden Gloves, Goalie Resistance, Goalie Long Ball'>Perks</div>,
                 id: 'goalkeeperPerks',
                 renderData: (monkey) => renderPerks(monkey, 'goalkeeper')
             }
