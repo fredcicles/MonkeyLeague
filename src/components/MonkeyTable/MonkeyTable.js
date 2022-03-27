@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+    MAX_PERKS_STRIKER,
+    MAX_PERKS_MIDFIELDER,
+    MAX_PERKS_DEFENDER,
+    MAX_PERKS_GOALKEEPER
+} from '../../constants/monkey.constants'
 import EnhancedTable from '../EnhancedTable'
 import './MonkeyTable.css'
 
@@ -12,9 +18,17 @@ const renderMaxPotential = (monkey, position) => {
 }
 
 const renderPerks = (monkey, position) => {
-    const perk = monkey[`${position}Perks`]
-    const score = monkey[`${position}PerksScore`]
-    return perk ? `${perk.toFixed(2)} (${formatPercent(score)})` : ''
+    const perk = monkey[`${position}Perks`].toFixed(2)
+    const score = formatPercent(monkey[`${position}PerksScore`])
+    const maxPerk = position === 'striker' ? MAX_PERKS_STRIKER :
+        position === 'midfielder' ? MAX_PERKS_MIDFIELDER :
+            position === 'defender' ? MAX_PERKS_DEFENDER :
+                position === 'goalkeeper' ? MAX_PERKS_GOALKEEPER :
+                    position === 'total' ? MAX_PERKS_STRIKER + MAX_PERKS_MIDFIELDER + MAX_PERKS_DEFENDER + MAX_PERKS_GOALKEEPER
+                        : ''
+    const title = `${perk} out of ${maxPerk} possible = ${score}`
+
+    return perk ? <div title={title}>{`${perk} (${score})`}</div> : ''
 }
 
 const renderSkill = (monkey, skill) => {
@@ -26,7 +40,7 @@ const renderSkill = (monkey, skill) => {
 }
 
 const createLink = (monkey, linkField, displayField) => {
-    return <a href={monkey[linkField]} target='_blank' rel='noreferrer'>{monkey[displayField]}</a>
+    return <a title='Link to Magic Eden' href={monkey[linkField]} target='_blank' rel='noreferrer'>{monkey[displayField]}</a>
 }
 
 
@@ -42,7 +56,7 @@ const columns = [
         renderData: monkey => createLink(monkey, 'link', 'name'),
     },
     {
-        label: <>Price<br/>SOL</>,
+        label: <>Price<br />SOL</>,
         id: 'price',
     },
     {
@@ -75,7 +89,7 @@ const columns = [
                 renderData: monkey => renderSkill(monkey, 'control')
             },
             {
-                label: 'Sum',
+                label: <div title='Sum: 300  - 400'>Sum</div>,
                 id: 'totalMaxPotential'
             }
         ]
@@ -154,12 +168,12 @@ const columns = [
     },
     {
         id: 'totalPerksScore',
-        label: <>Total<br/>Perks</>,
+        label: <div title='Sum of all perks'>Total<br />Perks</div>,
         renderData: (monkey) => renderPerks(monkey, 'total')
     },
     {
         id: 'maxPotential',
-        label: <>Good<br/>At*</>,
+        label: <div title='Based on highest position score'>Good<br />At*</div>,
         className: 'experimental'
     }
 ]

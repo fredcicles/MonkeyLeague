@@ -1,11 +1,14 @@
-import { FieldPositionPerks, FieldPositionNames, TraitNames } from '../constants/monkey.constants'
+import { 
+    FieldPositionPerks, 
+    FieldPositionNames, 
+    TraitNames,
+    MAX_PERKS_STRIKER,
+    MAX_PERKS_MIDFIELDER,
+    MAX_PERKS_DEFENDER,
+    MAX_PERKS_GOALKEEPER,
+    MAX_STATS
+    } from '../constants/monkey.constants'
 import { descendingComparator } from './sorting.helpers'
-
-const MAX_PERKS_STRIKER = 0.63
-const MAX_PERKS_MIDFIELDER = 0.60
-const MAX_PERKS_DEFENDER = 0.59
-const MAX_PERKS_GOALKEEPER = 0.58
-const MAX_STATS = 400
 
 const getTraitValue = (monkey, traitName) => {
     const value = monkey.attributes.find(attribute => attribute.trait_type === traitName).value

@@ -22,34 +22,42 @@ const TipJar = () => {
 
     return (
         <div className='tipjar'>
-            <div className='heading'>
-                <div>
-                    <div className='title'>
-                        Tip Jar
-                    </div>
-                    <Money className='icon' />
-                </div>
-                <div className='content'>
-                    If you find this site useful, show your appreciation by contributing to the development by making a donation to our tip jar.
-                </div>
-            </div>
-            <div className='addresses'>
-                {addresses.map(wallet => (
-                    <div key={wallet.name} className='wallet'>
-                        <div className='logo'>
-                            <img src={`${process.env.PUBLIC_URL}/${wallet.logo}`} alt={`${wallet.name} Logo`} />
-                        </div>
-                        <div className='tooltip' onClick={() => copyToClipboard(wallet)} onMouseOut={() => revertTooltipText(wallet)}>
-                            <div className='address'>
-                                {wallet.address}
+            <table className='tipjar-table'>
+                <thead>
+                    <tr className='heading'>
+                        <td>
+                            <div className='title'>
+                                Tip Jar
                             </div>
-                            <div className='tooltiptext' id={`tooltip-${wallet.name}`}>{tooltipText}</div>
-                        </div>
-                    </div>
-                ))}
+                            <Money />
+                        </td>
+                        <td className='content'>
+                            If you find this site useful, show your appreciation by contributing to the development by making a donation to our tip jar.
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {addresses.map(wallet => (
+                        <tr key={wallet.name} className='wallet'>
+                            <td className='logo'>
+                                <img src={`${process.env.PUBLIC_URL}/${wallet.logo}`} alt={`${wallet.name} Logo`} />
+                            </td>
+                            <td className='tooltip' onClick={() => copyToClipboard(wallet)} onMouseOut={() => revertTooltipText(wallet)}>
+                                <div className='address'>
+                                    {wallet.address}
+                                </div>
+                                <div className='tooltiptext' id={`tooltip-${wallet.name}`}>{tooltipText}</div>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            <div className='support'>
+                For support or feedback, contact <b>cicles#4351</b> on discord, 
+                <b>@cicles</b> on the Monkey League discord server.
             </div>
             <Disclaimer className='footer' />
-        </div>
+        </div >
     )
 }
 

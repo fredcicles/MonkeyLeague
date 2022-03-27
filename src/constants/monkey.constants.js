@@ -255,3 +255,13 @@ export const FieldPositionPerks = [
         Perks: [Perks.GoldenGloves, Perks.GoalieResistance, Perks.GoalieLongBall]
     }
 ]
+
+export const MAX_PERKS_STRIKER = 0.63
+
+export const MAX_PERKS_MIDFIELDER = 0.60
+
+export const MAX_PERKS_DEFENDER = 0.59
+
+export const MAX_PERKS_GOALKEEPER = 0.58
+
+export const MAX_STATS = 400

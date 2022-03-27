@@ -5,38 +5,29 @@
     justify-content: space-evenly;
 }
 
-.tipjar .heading {
-    display: flex;
-}
 
-.tipjar .heading .icon {
-    margin: 2px;
+.tipjar-table th,
+.tipjar-table td  {
+    padding: 5px 10px;
 }
 
 .tipjar .heading .title {
-    margin: 2px;
     font-weight: bold;
 }
 
 .tipjar .heading .content {
-    margin: 2px 10px;
     width: 400px;
     text-align: left;
 }
 
-.tipjar .addresses .wallet {
-    display: flex;
-    margin-top: 5px;
-}
-
-.tipjar .logo img {
+.tipjar .wallet .logo img {
     width: 24px;
     height: 24px;    
 }
 
-.tipjar .address {
-    padding-top: 0;
-    margin-left: 10px;
+.tipjar .wallet .address {
+    width: 400px;
+    text-align: left;
 }
 
 .tooltip {

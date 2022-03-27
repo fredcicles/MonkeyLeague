@@ -1,3 +1,15 @@
+.monkey-table table,
+.monkey-table th,
+.monkey-table td  {
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+.monkey-table th,
+.monkey-table td  {
+    padding: 5px 10px;
+}
+
 .monkey-table {
     padding-left: 10px;
     padding-right: 10px;

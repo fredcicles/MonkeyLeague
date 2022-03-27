@@ -6,7 +6,7 @@ const ListingsLoadingMessage = ({ visible }) => {
     return (
         <>
             <div className='loading-section'>
-                <div className='loading-message'>Loading listings from Magic Eden.  This will initially take about a minute.</div>
+                <div className='loading-message'>Loading listings from Magic Eden.  The initial load from Magic Eden could take a couple of minutes.</div>
             </div>
             <Disclaimer className='body' />
         </>
