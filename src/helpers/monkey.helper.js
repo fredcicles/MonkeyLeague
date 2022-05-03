@@ -81,11 +81,16 @@ export const transformRawMonkeysData = monkeys => monkeys.map(transformRawMonkey
 
 // Perform any data transformation here
 export const transformRawMonkeyData = monkey => {
-    const totalMaxPotential =
-        Number(getTraitValue(monkey, TraitNames.MaxAccuracy)) +
-        Number(getTraitValue(monkey, TraitNames.MaxPassing)) +
-        Number(getTraitValue(monkey, TraitNames.MaxDefense)) +
-        Number(getTraitValue(monkey, TraitNames.MaxControl))
+    const accuracy = Number(getTraitValue(monkey, TraitNames.Accuracy))
+    const control = Number(getTraitValue(monkey, TraitNames.Control))
+    const defense = Number(getTraitValue(monkey, TraitNames.Defense))
+    const passing = Number(getTraitValue(monkey, TraitNames.Passing))
+
+    const maxAccuracy = Number(getTraitValue(monkey, TraitNames.MaxAccuracy))
+    const maxControl = Number(getTraitValue(monkey, TraitNames.MaxControl))
+    const maxDefense = Number(getTraitValue(monkey, TraitNames.MaxDefense))
+    const maxPassing = Number(getTraitValue(monkey, TraitNames.MaxPassing))
+    const maxTotalSkills = maxAccuracy + maxControl + maxDefense + maxPassing
 
     const strikerPerks = getFieldPositionPerksTotal(monkey, FieldPositionNames.Striker)
     const strikerPerksScore = strikerPerks / MAX_PERKS_STRIKER
@@ -107,14 +112,18 @@ export const transformRawMonkeyData = monkey => {
         price: monkey.price,
         link: `https://magiceden.io/item-details/${monkey.mintAddress}`,
         alphaScore: getTraitValue(monkey, TraitNames.AlphaScore),
-        accuracy: getTraitValue(monkey, TraitNames.Accuracy),
-        maxAccuracy: getTraitValue(monkey, TraitNames.MaxAccuracy),
-        passing: getTraitValue(monkey, TraitNames.Passing),
-        maxPassing: getTraitValue(monkey, TraitNames.MaxPassing),
-        defense: getTraitValue(monkey, TraitNames.Defense),
-        maxDefense: getTraitValue(monkey, TraitNames.MaxDefense),
-        control: getTraitValue(monkey, TraitNames.Control),
-        maxControl: getTraitValue(monkey, TraitNames.MaxControl),
+
+        accuracy,
+        maxAccuracy,
+        control,
+        maxControl,
+        defense,
+        maxDefense,
+        passing,
+        maxPassing,
+        totalSkills: accuracy + passing + defense + control,
+        maxTotalSkills,
+        maxTotalSkillsPercentage: maxTotalSkills / MAX_STATS,
 
         strikerMaxPotential: strikerMaxPotential,
         strikerPerks: strikerPerks,
@@ -134,9 +143,6 @@ export const transformRawMonkeyData = monkey => {
 
         totalPerks: strikerPerks + midfielderPerks + defenderPerks + goalkeeperPerks,
         totalPerksScore: (strikerPerksScore + midfielderPerksScore + defenderPerksScore + goalkeeperPerksScore) / 4,
-
-        totalMaxPotential: totalMaxPotential,
-        totalMaxPotentialPercentage: totalMaxPotential / MAX_STATS,
 
         maxPotential: calculateMaxPotential(strikerMaxPotential, midfielderMaxPotential, defenderMaxPotential, goalkeeperMaxPotential)
     }

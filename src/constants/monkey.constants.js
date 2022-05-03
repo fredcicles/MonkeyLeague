@@ -219,11 +219,11 @@ export const FieldPositionPerks = [
             },
             {
                 Name: Skills.MaxControl,
-                Weight: 1
+                Weight: 0
             },
             {
                 Name: Skills.MaxPassing,
-                Weight: 0
+                Weight: 1
             },
             {
                 Name: Skills.MaxDefense,

@@ -132,8 +132,8 @@ const MonkeysForSalePage = () => {
         const controlLowMatch = monkey.maxControl >= Number(filters.controlRange[0])
         const controlHighMatch = !filters.controlRange[1] || monkey.maxControl <= Number(filters.controlRange[1])
 
-        const skillsSumLowMatch = monkey.totalMaxPotential >= Number(filters.skillsSumRange[0])
-        const skillsSumHighMatch = !filters.skillsSumRange[1] || monkey.totalMaxPotential <= Number(filters.skillsSumRange[1])
+        const skillsSumLowMatch = monkey.maxTotalSkills >= Number(filters.skillsSumRange[0])
+        const skillsSumHighMatch = !filters.skillsSumRange[1] || monkey.maxTotalSkills <= Number(filters.skillsSumRange[1])
 
         // Perks
         const strikerPerksLowMatch = monkey.strikerPerksScore * 100 >= Number(filters.strikerPerksRange[0])

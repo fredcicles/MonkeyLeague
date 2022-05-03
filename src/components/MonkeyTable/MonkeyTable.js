@@ -12,6 +12,14 @@ const formatPercent = (value) => {
     return `${(value * 100).toFixed(0)}%`
 }
 
+const renderAlphaScore = ({ alphaScore }) => {
+    const ratingClass = Number(alphaScore) < 400 ? 'low' :
+        Number(alphaScore) >= 600 ? 'high' :
+            'medium'
+    return <div className={ratingClass}>{alphaScore}</div>
+}
+
+
 const renderMaxPotential = (monkey, position) => {
     const score = monkey[`${position}MaxPotential`]
     return score ? score.toFixed(2) : ''
@@ -19,7 +27,8 @@ const renderMaxPotential = (monkey, position) => {
 
 const renderPerks = (monkey, position) => {
     const perk = monkey[`${position}Perks`].toFixed(2)
-    const score = formatPercent(monkey[`${position}PerksScore`])
+    const rawScore = monkey[`${position}PerksScore`]
+    const score = formatPercent(rawScore)
     const maxPerk = position === 'striker' ? MAX_PERKS_STRIKER :
         position === 'midfielder' ? MAX_PERKS_MIDFIELDER :
             position === 'defender' ? MAX_PERKS_DEFENDER :
@@ -28,7 +37,18 @@ const renderPerks = (monkey, position) => {
                         : ''
     const title = `${perk} out of ${maxPerk} possible = ${score}`
 
-    return perk ? <div title={title}>{`${perk} (${score})`}</div> : ''
+    let ratingClass = ''
+    if (position === 'total') {
+        ratingClass = Number(rawScore) <= 0.39 ? 'low' :
+        Number(rawScore) >= 0.46 ? 'high' :
+            'medium'
+    } else {
+        ratingClass = Number(rawScore) <= 0.36 ? 'low' :
+        Number(rawScore) >= 0.47 ? 'high' :
+            'medium'
+    }
+
+    return perk ? <div className={ratingClass} title={title}>{`${perk} (${score})`}</div> : ''
 }
 
 const renderSkill = (monkey, skill) => {
@@ -36,7 +56,18 @@ const renderSkill = (monkey, skill) => {
     const skillValue = monkey[skill]
     const skillMaxValue = monkey[`max${skillName}`]
 
-    return <div title={`${skillValue} ${skillName} / ${skillMaxValue} Max ${skillName}`}>{`${skillValue} / ${skillMaxValue}`}</div>
+    let ratingClass = ''
+    if (skill === 'totalSkills') {
+        ratingClass = skillMaxValue <= 333 ? 'low' :
+            skillMaxValue >= 367 ? 'high' :
+                'medium'
+    } else {
+        ratingClass = skillMaxValue <= 83 ? 'low' :
+            skillMaxValue >= 92 ? 'high' :
+                'medium'
+    }
+
+    return <div className={ratingClass} title={`${skillValue} ${skillName} / ${skillMaxValue} Max ${skillName}`}>{`${skillValue} / ${skillMaxValue}`}</div>
 }
 
 const createLink = (monkey, linkField, displayField) => {
@@ -62,6 +93,7 @@ const columns = [
     {
         label: <div title='Alpha Score: 180  - 800'>Alpha<br />Score</div>,
         id: 'alphaScore',
+        renderData: monkey => renderAlphaScore(monkey)
     },
     {
         group: true,
@@ -90,7 +122,8 @@ const columns = [
             },
             {
                 label: <div title='Sum: 300  - 400'>Sum</div>,
-                id: 'totalMaxPotential'
+                id: 'maxTotalSkills',
+                renderData: monkey => renderSkill(monkey, 'totalSkills')
             }
         ]
     },
